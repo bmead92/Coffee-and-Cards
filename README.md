@@ -2,6 +2,8 @@
 
 #### Created By: Bryce Meadors, Kiaya Anderson, Lok Tamang
 
+![image](https://cdn.pixabay.com/photo/2013/07/13/12/18/cards-159600__180.png)
+
 ## Project Description
 **“Coffee & Cards”** is a Java Blackjack experience. The game is
 a console-based application where a user will attempt to
@@ -47,4 +49,5 @@ or enter 'Stay' to keep their current cards.<br>
 1. Both the user and the dealer start with 21. It's a draw - no one wins or loses.
 2. The user starts with 21 and the dealer does not. The user wins.
 
-
+##Project Diagram
+![image](https://res.cloudinary.com/kacloud20/image/upload/v1668105659/TLGFinalProject/MicrosoftTeams-image_ykb8qg.png)
