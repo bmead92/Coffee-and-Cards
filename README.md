@@ -49,5 +49,5 @@ or enter 'Stay' to keep their current cards.<br>
 1. Both the user and the dealer start with 21. It's a draw - no one wins or loses.
 2. The user starts with 21 and the dealer does not. The user wins.
 
-##Project Diagram
+## Project Diagram
 ![image](https://res.cloudinary.com/kacloud20/image/upload/v1668105659/TLGFinalProject/MicrosoftTeams-image_ykb8qg.png)
