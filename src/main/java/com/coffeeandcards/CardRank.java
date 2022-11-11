@@ -12,6 +12,8 @@ public enum CardRank {
     public int getValue() {
         return value;
     }
+
+    //possible need for setValue() to change value of Ace to 11 when necessary?
 }
 
 

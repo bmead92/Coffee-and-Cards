@@ -1,9 +1,10 @@
 package com.coffeeandcards;
 
-public class User implements IPlayer{
+public class User implements IPlayer {
 
-    public int getCard() {
-        return 0;
+    public void getCard() {
+        DeckUtility deckUtility = Dealer.deckUtility;
+        deckUtility.drawCardFromDeck();
     }
 
     @Override
@@ -12,7 +13,7 @@ public class User implements IPlayer{
     }
 
     @Override
-    public int displayValue() {
+    public int displayCards() {
         return 0;
     }
 }
