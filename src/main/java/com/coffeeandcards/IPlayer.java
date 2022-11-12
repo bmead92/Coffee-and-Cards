@@ -4,5 +4,4 @@ public interface IPlayer {
 
     public void getCard();
     public void keepHand();
-    public int displayCards();
 }

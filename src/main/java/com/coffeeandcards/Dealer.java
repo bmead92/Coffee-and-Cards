@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dealer implements IPlayer {
-    private final BlackJack blackJack;
     public static final int MINIMUM_DEALER_HAND_VALUE = 17;
     public static final int STARTING_NUMBER_OF_CARDS = 2;
     private int valueOfDealerHand = 0;
     private List<Card> dealerHand = new ArrayList<>();
-
-    public Dealer(BlackJack blackJackInstance) {
-        this.blackJack = blackJackInstance;
-    }
 
     /**
      * The dealer has to have a hand value of at least 17, getCard() is run until that minimum is met.
@@ -21,22 +16,21 @@ public class Dealer implements IPlayer {
     @Override
     public void getCard() {
         //TODO: Draw a card from the deck until the dealer has the min
-        int valueOfHand = getValueOfDealerHand();
-        Card drawnCard = blackJack.
+        Card drawnCard = BlackJack.
+                getBlackJackInstance().
                 getDeckUtility().
                 drawCardFromDeck();
-        if (valueOfHand < MINIMUM_DEALER_HAND_VALUE) { // maybe need to push this into another method?
-            valueOfHand += drawnCard.
+        if (valueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) { // maybe need to push this into another method?
+            valueOfDealerHand += drawnCard.
                     getCardRank()
                     .getValue();
             dealerHand.add(drawnCard);
         } else {
-            valueOfHand += drawnCard.
+            valueOfDealerHand += drawnCard.
                     getCardRank().
                     getValue();
             dealerHand.add(drawnCard);
         }
-        setValueOfDealerHand(valueOfHand);
         setDealerHand(dealerHand);
     }
 
@@ -51,9 +45,11 @@ public class Dealer implements IPlayer {
      * to the user at the start. When the user ends their turn, the dealer will reveal the rest of their cards.
      * @return int currentValueOfHand
      */
-    @Override
-    public int displayCards() {
-        boolean isUserTurnCompleted = blackJack.
+
+    public int valueOfDealerHand() {
+        int currentValueOfHand = 0;
+        boolean isUserTurnCompleted = BlackJack.
+                getBlackJackInstance().
                 getUser().
                 isTurnCompleted();
         int valueOfCardOne = dealerHand.
@@ -65,10 +61,11 @@ public class Dealer implements IPlayer {
                 getCardRank().
                 getValue();
         if (isUserTurnCompleted) {
-            int currentValueOfHand = valueOfCardOne +
+             currentValueOfHand = valueOfCardOne +
                     valueOfCardTwo;
+        } else {
+            currentValueOfHand = valueOfCardOne;
         }
-        int currentValueOfHand = valueOfCardOne;
         return currentValueOfHand;
     }
 
@@ -79,7 +76,10 @@ public class Dealer implements IPlayer {
         while (numberOfCardsDealtToEachPlayer < STARTING_NUMBER_OF_CARDS) {
             //add cards to players hands
             getCard(); // dealer implementation of draw/hit/getCard
-            //blackjack.getUser.getCard(); // user implementation of draw/hit/getCard
+            BlackJack.
+                    getBlackJackInstance().
+                    getUser().
+                    getCard(); // user implementation of draw/hit/getCard
             numberOfCardsDealtToEachPlayer++;
         }
     }

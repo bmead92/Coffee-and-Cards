@@ -16,24 +16,21 @@ public class DeckUtility {
     private Stack<Card> deckOfCardsAsAStack;
     private List<Card> discardPile = new ArrayList<>();
 
-    private int cardsLeftInDeck = deckOfCardsAsAStack.size();
-
-    private int cardsInDiscardPile = discardPile.size();
-
     public void fillDeckWithCards() {
         List<Card> deckOfCards = new ArrayList<>();
         CardRank[] cardRanks = CardRank.values();
         CardSuit[] cardSuits = CardSuit.values();
-        for (int i = 0; i < CardRank.values().length; i++) {
-            for (int j = 0; j < CardSuit.values().length; j++) {
-                deckOfCards.add(new Card(cardSuits[j], cardRanks[i]));
+        for (CardRank cardRank : cardRanks) {
+            for (CardSuit cardSuit : cardSuits) {
+                deckOfCards.add(new Card(cardSuit, cardRank));
             }
         }
         setDeckOfCardsAsAList(deckOfCards);
     }
 
     public void shuffleCards(List<Card> deckOfCards) {
-        Collections.shuffle(deckOfCards);
+        this.deckOfCardsAsAList = deckOfCards;
+        Collections.shuffle(deckOfCardsAsAList);
     }
 
     public void placeCardsIntoAStack(List<Card> deckOfCards) {
