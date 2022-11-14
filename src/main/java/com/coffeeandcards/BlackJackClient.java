@@ -10,6 +10,7 @@ public class BlackJackClient {
         BlackJack blackJackGame = BlackJack.createBlackJackGame();
         blackJackGame.setUpGame();
         System.out.println("The dealer face-up card is worth: " + blackJackGame.getDealer().valueOfDealerHand());
+        blackJackGame.getUser().displayUserHand();
         System.out.println("Your current hand value is: " + blackJackGame.getUser().valueOfUserHand());
         System.out.println("Would you like to Hit or Stay?");
         //TODO: Try-catch block for user input to handle exceptions

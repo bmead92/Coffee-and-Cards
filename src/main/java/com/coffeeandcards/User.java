@@ -29,6 +29,15 @@ public class User implements IPlayer {
         return valueOfPlayerHand;
     }
 
+    public void displayUserHand() {
+        StringBuilder display = new StringBuilder();
+        System.out.print("Your current hand: ");
+        for (Card card : userHand) {
+            display.append(card.getCardRank()).append(" of ").append(card.getCardSuit().getIcon());
+        }
+        System.out.println(display.toString());
+    }
+
     public boolean isTurnCompleted() {
         return turnCompleted;
     }
