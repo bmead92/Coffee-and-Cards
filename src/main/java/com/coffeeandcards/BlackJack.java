@@ -36,15 +36,21 @@ public class BlackJack {
     }
 
     public void decideTheWinner() {
-        if ((user.valueOfUserHand() == MAX_VALUE_ALLOWED_IN_HAND) &&
-                (dealer.valueOfDealerHand() != MAX_VALUE_ALLOWED_IN_HAND)) {
+        if ((user.getValueOfPlayerHand() == MAX_VALUE_ALLOWED_IN_HAND) &&
+                (dealer.getIntValueOfDealerHand() != MAX_VALUE_ALLOWED_IN_HAND)) {
             System.out.println("How lucky! You started with 21 and the dealer did not, you win!");
-        } else if((user.valueOfUserHand() > MAX_VALUE_ALLOWED_IN_HAND) &&
-                (dealer.valueOfDealerHand() > MAX_VALUE_ALLOWED_IN_HAND)) {
+        } else if((user.getValueOfPlayerHand() > MAX_VALUE_ALLOWED_IN_HAND) &&
+                (dealer.getIntValueOfDealerHand() > MAX_VALUE_ALLOWED_IN_HAND)) {
             System.out.println("You both busted, it's a draw!");
-        } else if ((user.valueOfUserHand() <= MAX_VALUE_ALLOWED_IN_HAND) &&
-                (user.valueOfUserHand() > dealer.valueOfDealerHand())) {
-            System.out.println("Congrulations, you win!");
+        } else if ((user.getValueOfPlayerHand() <= MAX_VALUE_ALLOWED_IN_HAND) &&
+                (user.getValueOfPlayerHand() > dealer.getIntValueOfDealerHand())) {
+            System.out.println("Congratulations, you win!");
+        } else if ((dealer.getIntValueOfDealerHand() > user.getValueOfPlayerHand()) &&
+                (dealer.getIntValueOfDealerHand() <= MAX_VALUE_ALLOWED_IN_HAND)) {
+            System.out.println("Better luck next time. Dealer wins.");
+        } else if ((user.getValueOfPlayerHand() <= MAX_VALUE_ALLOWED_IN_HAND) &&
+                (dealer.getIntValueOfDealerHand() > MAX_VALUE_ALLOWED_IN_HAND)) {
+            System.out.println("Dealer bust. You win!");
         }
     }
 

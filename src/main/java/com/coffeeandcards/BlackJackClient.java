@@ -9,7 +9,7 @@ public class BlackJackClient {
         //global static reference point that also ensures only 1 Dealer, 1 User, and 1 deck of cards.
         BlackJack blackJackGame = BlackJack.createBlackJackGame();
         blackJackGame.setUpGame();
-        System.out.println("The dealer face-up card is worth: " + blackJackGame.getDealer().valueOfDealerHand());
+        System.out.println("The dealer face-up card is worth: " + blackJackGame.getDealer().getIntValueOfDealerHand());
         blackJackGame.getUser().displayUserHand();
         System.out.println("Your current hand value is: " + blackJackGame.getUser().valueOfUserHand());
         System.out.println("Would you like to Hit or Stay?");
@@ -26,8 +26,9 @@ public class BlackJackClient {
 //        else if (inputSelection.equalsIgnoreCase("Stay")) {
 //            //TODO: if the user selects 'Stay', their turn ends and the game proceeds
         blackJackGame.getUser().keepHand();
+        blackJackGame.getDealer().checkForDealerMinimumHandValue();
 //        }
-        System.out.println("The dealer's hand is worth: " + blackJackGame.getDealer().valueOfDealerHand());
+        System.out.println("The dealer's hand is worth: " + blackJackGame.getDealer().getIntValueOfDealerHand());
         blackJackGame.decideTheWinner();
         scanner.close();
         System.out.println(BlackJackClientUtility.exitMessage());

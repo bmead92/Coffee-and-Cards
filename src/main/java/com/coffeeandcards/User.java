@@ -24,8 +24,10 @@ public class User implements IPlayer {
 
     public int valueOfUserHand() {
         for (Card card : userHand) {
-            valueOfPlayerHand += card.getCardRank().getValue();
+            valueOfPlayerHand += card.getCardRank().
+                    getValue();
         }
+        setValueOfPlayerHand(valueOfPlayerHand);
         return valueOfPlayerHand;
     }
 
@@ -52,6 +54,14 @@ public class User implements IPlayer {
 
     public void setUserHand(List<Card> userHand) {
         this.userHand = userHand;
+    }
+
+    public int getValueOfPlayerHand() {
+        return valueOfPlayerHand;
+    }
+
+    public void setValueOfPlayerHand(int valueOfPlayerHand) {
+        this.valueOfPlayerHand = valueOfPlayerHand;
     }
 }
 

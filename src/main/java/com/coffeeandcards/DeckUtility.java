@@ -12,12 +12,12 @@ import java.util.Stack;
  * This class provides those utilities while separating its functionality from the Card class.
  */
 public class DeckUtility {
-    private List<Card> deckOfCardsAsAList;
-    private Stack<Card> deckOfCardsAsAStack;
+    private List<Card> deckOfCardsAsAList = new ArrayList<>();
+    private Stack<Card> deckOfCardsAsAStack = new Stack<>();
     private List<Card> discardPile = new ArrayList<>();
 
     public void fillDeckWithCards() {
-        List<Card> deckOfCards = new ArrayList<>();
+        List<Card> deckOfCards = deckOfCardsAsAList;
         CardRank[] cardRanks = CardRank.values();
         CardSuit[] cardSuits = CardSuit.values();
         for (CardRank cardRank : cardRanks) {
@@ -34,7 +34,7 @@ public class DeckUtility {
     }
 
     public void placeCardsIntoAStack(List<Card> deckOfCards) {
-        Stack<Card> deckOfCardsInAStack = new Stack<>();
+        Stack<Card> deckOfCardsInAStack = deckOfCardsAsAStack;
         for (Card card : deckOfCards) {
             deckOfCardsInAStack.push(card);
         }

@@ -6,7 +6,7 @@ import java.util.List;
 public class Dealer implements IPlayer {
     public static final int MINIMUM_DEALER_HAND_VALUE = 17;
     public static final int STARTING_NUMBER_OF_CARDS = 2;
-    private int valueOfDealerHand = 0;
+    private int intValueOfDealerHand = 0;
     private List<Card> dealerHand = new ArrayList<>();
 
     /**
@@ -15,34 +15,30 @@ public class Dealer implements IPlayer {
      */
     @Override
     public void getCard() {
-        //TODO: Draw a card from the deck until the dealer has the min
+        //TODO: Draw initial card from the deck
+        int intValueOfDealerHand = getIntValueOfDealerHand();
         Card drawnCard = BlackJack.
                 getBlackJackInstance().
                 getDeckUtility().
                 drawCardFromDeck();
-        if (valueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) { // maybe need to push this into another method?
-            valueOfDealerHand += drawnCard.
-                    getCardRank()
-                    .getValue();
-            dealerHand.add(drawnCard);
-        } else {
-            valueOfDealerHand += drawnCard.
-                    getCardRank().
-                    getValue();
-            dealerHand.add(drawnCard);
-        }
+        intValueOfDealerHand += drawnCard.
+                getCardRank().
+                getValue();
+        dealerHand.add(drawnCard);
         setDealerHand(dealerHand);
+        setIntValueOfDealerHand(intValueOfDealerHand);
     }
 
     @Override
     public void keepHand() {
         System.out.println("The dealer has ended their turn." +
-                "\nDealer has: " + getValueOfDealerHand());
+                "\nDealer has: " + getIntValueOfDealerHand());
     }
 
     /**
      * Because the dealer is dealt a face-down and a face-up card,displayCards will show one card
      * to the user at the start. When the user ends their turn, the dealer will reveal the rest of their cards.
+     *
      * @return int currentValueOfHand
      */
 
@@ -61,7 +57,7 @@ public class Dealer implements IPlayer {
                 getCardRank().
                 getValue();
         if (isUserTurnCompleted) {
-             currentValueOfHand = valueOfCardOne +
+            currentValueOfHand = valueOfCardOne +
                     valueOfCardTwo;
         } else {
             currentValueOfHand = valueOfCardOne;
@@ -84,12 +80,10 @@ public class Dealer implements IPlayer {
         }
     }
 
-    public int getValueOfDealerHand() {
-        return valueOfDealerHand;
-    }
-
-    public void setValueOfDealerHand(int valueOfDealerHand) {
-        this.valueOfDealerHand = valueOfDealerHand;
+    public void checkForDealerMinimumHandValue() {
+        while (intValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
+            getCard();
+        }
     }
 
     public List<Card> getDealerHand() {
@@ -100,6 +94,11 @@ public class Dealer implements IPlayer {
         this.dealerHand = dealerHand;
     }
 
+    public int getIntValueOfDealerHand() {
+        return intValueOfDealerHand;
+    }
 
-
+    public void setIntValueOfDealerHand(int intValueOfDealerHand) {
+        this.intValueOfDealerHand = intValueOfDealerHand;
+    }
 }
