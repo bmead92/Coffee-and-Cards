@@ -57,6 +57,14 @@ public class User implements IPlayer {
     public void setTurnCompleted(boolean turnCompleted) {
         this.turnCompleted = turnCompleted;
     }
+
+    public List<Card> getUserHand() {
+        return userHand;
+    }
+
+    public void setUserHand(List<Card> userHand) {
+        this.userHand = userHand;
+    }
 }
 
 
