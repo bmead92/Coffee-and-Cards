@@ -110,6 +110,7 @@ public class Dealer implements IPlayer {
         while (intValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
             drawCardFromDeck();
         }
+//        return intValueOfDealerHand;
     }
 
     public List<Card> getDealerHand() {
