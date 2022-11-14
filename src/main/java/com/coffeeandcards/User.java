@@ -6,12 +6,20 @@ import java.util.List;
 public class User implements IPlayer {
     private List<Card> userHand = new ArrayList<>();
     private boolean turnCompleted;
+    private int intValueOfUserHand = 0;
 
     public void drawCardFromDeck() {
-        userHand.add(BlackJack.
+        int intValueOfUserHand = getIntValueOfUserHand();
+        Card drawnCard = BlackJack.
                 getBlackJackInstance().
                 getDeckUtility().
-                drawCardFromDeck());
+                drawCardFromDeck();
+        intValueOfUserHand += drawnCard.
+                getCardRank().
+                getValue();
+        userHand.add(drawnCard);
+        setUserHand(userHand);
+        setIntValueOfUserHand(intValueOfUserHand);
         changeValueOfAce();
     }
 
@@ -35,15 +43,17 @@ public class User implements IPlayer {
     public int currentValueOfUserHand() {
         int currentValueOfUserHand = 0;
         for (Card card : userHand) {
-            currentValueOfUserHand += card.getCardRank().
+            currentValueOfUserHand += card.
+                    getCardRank().
                     getValue();
         }
+        setIntValueOfUserHand(currentValueOfUserHand);
         return currentValueOfUserHand;
     }
 
     public void displayUserHand() {
         StringBuilder display = new StringBuilder();
-        System.out.print("Your current hand ");
+        System.out.print("Your current hand: ");
         for (Card card : userHand) {
             display.append(card.getCardRank()).append(" of ").append(card.getCardSuit().getIcon());
         }
@@ -64,6 +74,14 @@ public class User implements IPlayer {
 
     public void setUserHand(List<Card> userHand) {
         this.userHand = userHand;
+    }
+
+    public void setIntValueOfUserHand(int intValueOfUserHand) {
+        this.intValueOfUserHand = intValueOfUserHand;
+    }
+
+    public int getIntValueOfUserHand() {
+        return intValueOfUserHand;
     }
 }
 
