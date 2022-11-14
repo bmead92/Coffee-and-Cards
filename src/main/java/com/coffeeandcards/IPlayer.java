@@ -2,6 +2,7 @@ package com.coffeeandcards;
 
 public interface IPlayer {
 
-    public void getCard();
-    public void keepHand();
+    public void drawCardFromDeck();
+    public void endTurn();
+    public void changeValueOfAce();
 }

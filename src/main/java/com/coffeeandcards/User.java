@@ -5,35 +5,45 @@ import java.util.List;
 
 public class User implements IPlayer {
     private List<Card> userHand = new ArrayList<>();
-    private int valueOfPlayerHand = 0;
     private boolean turnCompleted;
 
-    public void getCard() {
+    public void drawCardFromDeck() {
         userHand.add(BlackJack.
                 getBlackJackInstance().
                 getDeckUtility().
                 drawCardFromDeck());
+        changeValueOfAce();
     }
 
     @Override
-    public void keepHand() {
+    public void endTurn() {
         setTurnCompleted(true);
         System.out.println("User turn is over. Let's see what the dealer has!");
 
     }
 
-    public int valueOfUserHand() {
+    @Override
+    public void changeValueOfAce() {
         for (Card card : userHand) {
-            valueOfPlayerHand += card.getCardRank().
+            if (currentValueOfUserHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
+                    card.getCardRank().equals(CardRank.ACE)) {
+                card.getCardRank().setValue(1);
+            }
+        }
+    }
+
+    public int currentValueOfUserHand() {
+        int currentValueOfUserHand = 0;
+        for (Card card : userHand) {
+            currentValueOfUserHand += card.getCardRank().
                     getValue();
         }
-        setValueOfPlayerHand(valueOfPlayerHand);
-        return valueOfPlayerHand;
+        return currentValueOfUserHand;
     }
 
     public void displayUserHand() {
         StringBuilder display = new StringBuilder();
-        System.out.print("Your current hand: ");
+        System.out.print("Your current hand ");
         for (Card card : userHand) {
             display.append(card.getCardRank()).append(" of ").append(card.getCardSuit().getIcon());
         }
@@ -46,22 +56,6 @@ public class User implements IPlayer {
 
     public void setTurnCompleted(boolean turnCompleted) {
         this.turnCompleted = turnCompleted;
-    }
-
-    public List<Card> getUserHand() {
-        return userHand;
-    }
-
-    public void setUserHand(List<Card> userHand) {
-        this.userHand = userHand;
-    }
-
-    public int getValueOfPlayerHand() {
-        return valueOfPlayerHand;
-    }
-
-    public void setValueOfPlayerHand(int valueOfPlayerHand) {
-        this.valueOfPlayerHand = valueOfPlayerHand;
     }
 }
 

@@ -1,5 +1,6 @@
 package com.coffeeandcards;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class Dealer implements IPlayer {
      * getCard() is also run if the dealer wishes to 'Hit' and get a new card.
      */
     @Override
-    public void getCard() {
+    public void drawCardFromDeck() {
         //TODO: Draw initial card from the deck
         int intValueOfDealerHand = getIntValueOfDealerHand();
         Card drawnCard = BlackJack.
@@ -27,10 +28,30 @@ public class Dealer implements IPlayer {
         dealerHand.add(drawnCard);
         setDealerHand(dealerHand);
         setIntValueOfDealerHand(intValueOfDealerHand);
+        changeValueOfAce();
     }
 
     @Override
-    public void keepHand() {
+    public void changeValueOfAce() {
+        for (Card card : dealerHand) {
+            if (currentValueOfDealerHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
+                    card.getCardRank().equals(CardRank.ACE)) {
+                card.getCardRank().setValue(1);
+            }
+        }
+    }
+
+    public void displayDealerHand() {
+        StringBuilder display = new StringBuilder();
+        System.out.print("Dealer's hand: ");
+        for (Card card : dealerHand) {
+            display.append(card.getCardRank()).append(" of ").append(card.getCardSuit().getIcon());
+        }
+        System.out.println(display.toString());
+    }
+
+    @Override
+    public void endTurn() {
         System.out.println("The dealer has ended their turn." +
                 "\nDealer has: " + getIntValueOfDealerHand());
     }
@@ -42,27 +63,32 @@ public class Dealer implements IPlayer {
      * @return int currentValueOfHand
      */
 
-    public int valueOfDealerHand() {
-        int currentValueOfHand = 0;
+    public int showDealerCardValues() {
+        int currentVisibleValueOfDealerHand = 0;
         boolean isUserTurnCompleted = BlackJack.
                 getBlackJackInstance().
                 getUser().
                 isTurnCompleted();
-        int valueOfCardOne = dealerHand.
-                get(0).
-                getCardRank().
-                getValue();
-        int valueOfCardTwo = dealerHand.
-                get(1).
-                getCardRank().
-                getValue();
+
         if (isUserTurnCompleted) {
-            currentValueOfHand = valueOfCardOne +
-                    valueOfCardTwo;
+            currentVisibleValueOfDealerHand = currentValueOfDealerHand();
         } else {
-            currentValueOfHand = valueOfCardOne;
+            currentVisibleValueOfDealerHand = dealerHand.get(0).
+                    getCardRank().
+                    getValue();
         }
-        return currentValueOfHand;
+        return currentVisibleValueOfDealerHand;
+    }
+
+    public int currentValueOfDealerHand() {
+        int totalValueOfDealerHand = 0;
+        for (Card card : dealerHand) {
+            totalValueOfDealerHand += card.
+                    getCardRank().
+                    getValue();
+        }
+        setIntValueOfDealerHand(totalValueOfDealerHand);
+        return totalValueOfDealerHand;
     }
 
     public void dealCards() {
@@ -71,18 +97,18 @@ public class Dealer implements IPlayer {
         int numberOfCardsDealtToEachPlayer = 0;
         while (numberOfCardsDealtToEachPlayer < STARTING_NUMBER_OF_CARDS) {
             //add cards to players hands
-            getCard(); // dealer implementation of draw/hit/getCard
+            drawCardFromDeck(); // dealer implementation of draw/hit/getCard
             BlackJack.
                     getBlackJackInstance().
                     getUser().
-                    getCard(); // user implementation of draw/hit/getCard
+                    drawCardFromDeck(); // user implementation of draw/hit/getCard
             numberOfCardsDealtToEachPlayer++;
         }
     }
 
     public void checkForDealerMinimumHandValue() {
         while (intValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
-            getCard();
+            drawCardFromDeck();
         }
     }
 
