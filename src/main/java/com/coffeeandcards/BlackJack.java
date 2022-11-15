@@ -7,20 +7,17 @@ public class BlackJack {
     private DeckUtility deckUtility;
     private Dealer dealer;
     private User user;
-    private boolean gameStatus;
-
     public static final int MAX_VALUE_ALLOWED_IN_HAND = 21;
 
-    private BlackJack(DeckUtility deckUtility, Dealer dealer, User user, boolean gameStatus) {
+    private BlackJack(DeckUtility deckUtility, Dealer dealer, User user) {
         setDeckUtility(deckUtility);
         setDealer(dealer);
         setUser(user);
-        setGameStatus(gameStatus);
     }
 
     public static BlackJack createBlackJackGame() {
         if (blackJackInstance == null) {
-            blackJackInstance = new BlackJack(new DeckUtility(), new Dealer(), new User(), true);
+            blackJackInstance = new BlackJack(new DeckUtility(), new Dealer(), new User());
         }
         return blackJackInstance;
     }
@@ -94,14 +91,6 @@ public class BlackJack {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public boolean isGameStatus() {
-        return gameStatus;
-    }
-
-    public void setGameStatus(boolean gameStatus) {
-        this.gameStatus = gameStatus;
     }
 
     public static BlackJack getBlackJackInstance() {

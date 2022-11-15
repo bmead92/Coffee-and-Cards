@@ -10,15 +10,15 @@ public class BlackJackClient {
         blackJackGame.setUpGame();
         Dealer theDealer = blackJackGame.getDealer();
         User theUser = blackJackGame.getUser();
-
         boolean userTurnEnded = false;
 
+        theDealer.displayDealerHand();
         System.out.println("The dealer face-up card has a value of: " + theDealer.showDealerCardValues());
         theUser.displayUserHand();
         System.out.println("The current value of your hand is: " + theUser.currentValueOfUserHand());
 
         Scanner userInput = new Scanner(System.in);
-        if(theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND){
+        if (theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
             userTurnEnded = true;
             theUser.displayUserHand();
             System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
@@ -30,16 +30,21 @@ public class BlackJackClient {
         while (!userTurnEnded) {
             System.out.println("Would you like to Hit or Stay? Enter your choice below: ");
             String userSelection = userInput.nextLine();
+            boolean invalidInput = !userSelection.equalsIgnoreCase("Hit") &&
+                    !userSelection.equalsIgnoreCase("Stay");
+            if (invalidInput) {
+                System.out.println("Invalid entry. Enter 'Hit' or 'Stay': ");
+            }
             if (userSelection.equalsIgnoreCase("Hit")) {
                 theUser.drawCardFromDeck();
-                if(theUser.currentValueOfUserHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND){
+                if (theUser.currentValueOfUserHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                     userTurnEnded = true;
                     theUser.displayUserHand();
                     System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
                     blackJackGame.decideTheWinner();
                     userInput.close();
                     blackJackGame.endGame();
-                } else if(theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND){
+                } else if (theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                     userTurnEnded = true;
                     theUser.displayUserHand();
                     System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
@@ -55,9 +60,6 @@ public class BlackJackClient {
                 System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
                 userTurnEnded = true;
                 theUser.endTurn();
-            }
-            else {
-                System.out.println("Invalid entry. Enter 'Hit' or 'Stay': ");
             }
         }
 

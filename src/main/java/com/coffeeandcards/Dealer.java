@@ -1,6 +1,5 @@
 package com.coffeeandcards;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +41,21 @@ public class Dealer implements IPlayer {
     }
 
     public void displayDealerHand() {
+        List<Card> listToDisplay = new ArrayList<>();
+        boolean userTurnCompleted = BlackJack.getBlackJackInstance().getUser().isTurnCompleted();
+        if (!userTurnCompleted) {
+            System.out.println("Dealer's face-up card");
+            listToDisplay.add(dealerHand.get(0));
+            displayDealerCards(listToDisplay);
+        } else {
+            System.out.println("Dealer's final hand");
+            displayDealerCards(dealerHand);
+        }
+    }
+
+    private void displayDealerCards(List<Card> listOfCards) {
         StringBuilder display = new StringBuilder();
-        System.out.println("Dealer's cards: ");
-        for (Card card : dealerHand) {
+        for (Card card : listOfCards) {
             if (card.getCardRank().equals(CardRank.ACE) ||
                     card.getCardRank().equals(CardRank.KING) ||
                     card.getCardRank().equals(CardRank.QUEEN) ||

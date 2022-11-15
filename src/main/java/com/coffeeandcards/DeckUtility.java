@@ -14,7 +14,6 @@ import java.util.Stack;
 public class DeckUtility {
     private List<Card> deckOfCardsAsAList = new ArrayList<>();
     private Stack<Card> deckOfCardsAsAStack = new Stack<>();
-    private List<Card> discardPile = new ArrayList<>();
 
     public void fillDeckWithCards() {
         List<Card> deckOfCards = deckOfCardsAsAList;
@@ -45,9 +44,6 @@ public class DeckUtility {
         return getDeckOfCardsAsAStack().pop();
     }
 
-    public void addToDiscardPile(Card card) {
-        getDiscardPile().add(card);
-    }
 
     public List<Card> getDeckOfCardsAsAList() {
         return deckOfCardsAsAList;
@@ -63,13 +59,5 @@ public class DeckUtility {
 
     public void setDeckOfCardsAsAStack(Stack<Card> deckOfCardsAsAStack) {
         this.deckOfCardsAsAStack = deckOfCardsAsAStack;
-    }
-
-    public List<Card> getDiscardPile() {
-        return discardPile;
-    }
-
-    public void setDiscardPile(List<Card> discardPile) {
-        this.discardPile = discardPile;
     }
 }
