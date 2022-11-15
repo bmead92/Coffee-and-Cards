@@ -53,9 +53,21 @@ public class User implements IPlayer {
 
     public void displayUserHand() {
         StringBuilder display = new StringBuilder();
-        System.out.print("Your cards: ");
+        System.out.println("Your cards: ");
         for (Card card : userHand) {
-            display.append(card.getCardRank()).append(" of ").append(card.getCardSuit().getIcon());
+            if (card.getCardRank().equals(CardRank.ACE) ||
+                    card.getCardRank().equals(CardRank.KING) ||
+                    card.getCardRank().equals(CardRank.QUEEN) ||
+                    card.getCardRank().equals(CardRank.JACK)) {
+                char firstCharInCardRank = card.getCardRank().name().charAt(0);
+                display.append(firstCharInCardRank).append("  ").append(firstCharInCardRank).append("\n");
+                display.append(" ").append(card.getCardSuit().getIcon()).append("\n");
+                display.append(firstCharInCardRank).append("  ").append(firstCharInCardRank).append("\n");
+            } else {
+                display.append(card.getCardRank().getValue()).append("  ").append(card.getCardRank().getValue()).append("\n");
+                display.append(" ").append(card.getCardSuit().getIcon()).append("\n");
+                display.append(card.getCardRank().getValue()).append("  ").append(card.getCardRank().getValue()).append("\n");
+            }
         }
         System.out.println(display);
     }
