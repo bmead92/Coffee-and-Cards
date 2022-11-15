@@ -53,11 +53,11 @@ public class User implements IPlayer {
 
     public void displayUserHand() {
         StringBuilder display = new StringBuilder();
-        System.out.print("Your current hand: ");
+        System.out.print("Your cards: ");
         for (Card card : userHand) {
             display.append(card.getCardRank()).append(" of ").append(card.getCardSuit().getIcon());
         }
-        System.out.println(display.toString());
+        System.out.println(display);
     }
 
     public boolean isTurnCompleted() {
