@@ -2,7 +2,9 @@ package com.coffeeandcards;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.w3c.dom.ls.LSOutput;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,31 +19,56 @@ public class UserTest {
     }
 
     @Test
-    public void testUserDrawCardFromDeck() {
-        blackJackInstance.getUser().drawCardFromDeck();
+    public void testUserDrawCardFromDeckAddsACardToTheUsersHand() {
         int actualValue = blackJackInstance.
                 getUser().
+                getUserHand().size();
+        assertEquals(2, actualValue);
+        blackJackInstance.getUser().drawCardFromDeck();
+        actualValue = blackJackInstance.getUser().
                 getUserHand().
-                get(0).
-                getCardRank().
-                getValue();
-        assertEquals(10, actualValue);
+                size();
+        assertEquals(3, actualValue);
+        blackJackInstance.getUser().drawCardFromDeck();
+        actualValue = blackJackInstance.getUser().
+                getUserHand().
+                size();
+        assertEquals(4, actualValue);
     }
 
     @Test
     public void testUserEndTurnUpdatesTurnCompletedBoolean() {
-        blackJackInstance.getUser().endTurn();
         boolean actualValue = blackJackInstance.getUser().isTurnCompleted();
-        assertEquals(true, actualValue);
+        assertFalse(actualValue);
+        blackJackInstance.getUser().endTurn();
+        actualValue = blackJackInstance.getUser().isTurnCompleted();
+        assertTrue(actualValue);
     }
 
     @Test
     public void testUserChangeValueOfAce() {
-//        verify();
+        List<Card> testListOfCards = new ArrayList<>();
+        blackJackInstance.getUser().setUserHand(testListOfCards);
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
+        blackJackInstance.getUser().changeValueOfAce();
+        int actualValue = testListOfCards.get(0).getCardRank().getValue();
+        assertEquals(11, actualValue);
+        testListOfCards.add(new Card(CardSuit.SPADES, CardRank.ACE));
+        blackJackInstance.getUser().changeValueOfAce();
+        actualValue = testListOfCards.get(0).getCardRank().getValue();
+        assertEquals(1, actualValue);
     }
 
     @Test
     public void testCurrentValueOfUserHand() {
+        List<Card> testListOfCards = new ArrayList<>();
+        blackJackInstance.getUser().setUserHand(testListOfCards);
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.KING));
+        int actualValue = blackJackInstance.getUser().currentValueOfUserHand();
+        assertEquals(10, actualValue);
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.QUEEN));
+        actualValue = blackJackInstance.getUser().currentValueOfUserHand();
+        assertEquals(20, actualValue);
     }
 
     @Test
