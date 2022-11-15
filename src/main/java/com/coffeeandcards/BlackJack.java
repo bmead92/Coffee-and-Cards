@@ -1,6 +1,6 @@
 package com.coffeeandcards;
 
-import java.util.Collections;
+import java.util.Scanner;
 
 public class BlackJack {
     private static BlackJack blackJackInstance = null;
@@ -34,9 +34,16 @@ public class BlackJack {
         user.changeValueOfAce();
     }
 
-    public void endGame() {
-        System.out.println(BlackJackClientUtility.exitMessage());
-        System.exit(0);
+
+    public void finalInformationOfUser(User theUser) {
+        theUser.displayUserHand();
+        System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
+    }
+
+    public void finalInformationOfDealer(Dealer theDealer) {
+        theDealer.checkForDealerMinimumHandValue();
+        theDealer.displayDealerHand();
+        System.out.println("The dealer's hand is worth: " + theDealer.showDealerCardValues());
     }
 
     public void userInstantWin() {
@@ -45,8 +52,28 @@ public class BlackJack {
         }
     }
 
-    public void decideTheWinner() {
+    public boolean checkIfPlayerWantsToStartANewRound(Scanner scanner) {
+        String playAgain;
+        boolean doesPlayerWantToPlayAgain = true;
+        System.out.println(BlackJackClientUtility.playAgainMessage());
+        playAgain = scanner.nextLine();
+        while (!playAgain.equalsIgnoreCase("No") &&
+        !playAgain.equalsIgnoreCase("Yes")) {
+            System.out.println("Invalid input, please type 'yes' or 'no'");
+            playAgain = scanner.nextLine();
+        }
+        if (playAgain.equalsIgnoreCase("No")) {
+            doesPlayerWantToPlayAgain = false;
+            System.out.println(BlackJackClientUtility.exitMessage());
+            System.exit(0);
+        }
+        if (playAgain.equalsIgnoreCase("Yes")) {
+            blackJackInstance = null;
+        }
+        return doesPlayerWantToPlayAgain;
+    }
 
+    public void decideTheWinner() {
         int valueOfUserHand = user.currentValueOfUserHand();
         int valueOfDealerHand = dealer.getIntValueOfDealerHand();
         int twentyOne = MAX_VALUE_ALLOWED_IN_HAND;

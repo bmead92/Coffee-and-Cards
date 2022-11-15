@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class BlackJackClient {
     public static void main(String[] args) {
+        boolean doesPlayerWantToPlayAgain = true;
+        Scanner userInput = new Scanner(System.in);
+        while (doesPlayerWantToPlayAgain) {
         System.out.println(BlackJackClientUtility.welcomeMessage());
 
         BlackJack blackJackGame = BlackJack.createBlackJackGame();
@@ -17,57 +20,50 @@ public class BlackJackClient {
         theUser.displayUserHand();
         System.out.println("The current value of your hand is: " + theUser.currentValueOfUserHand());
 
-        Scanner userInput = new Scanner(System.in);
-        if (theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
-            userTurnEnded = true;
-            theUser.displayUserHand();
-            System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
-            blackJackGame.userInstantWin();
-            userInput.close();
-            blackJackGame.endGame();
-        }
-
-        while (!userTurnEnded) {
-            System.out.println("Would you like to Hit or Stay? Enter your choice below: ");
-            String userSelection = userInput.nextLine();
-            boolean invalidInput = !userSelection.equalsIgnoreCase("Hit") &&
-                    !userSelection.equalsIgnoreCase("Stay");
-            if (invalidInput) {
-                System.out.println("Invalid entry. Enter 'Hit' or 'Stay': ");
-            }
-            if (userSelection.equalsIgnoreCase("Hit")) {
-                theUser.drawCardFromDeck();
-                if (theUser.currentValueOfUserHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
-                    userTurnEnded = true;
-                    theUser.displayUserHand();
-                    System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
-                    blackJackGame.decideTheWinner();
-                    userInput.close();
-                    blackJackGame.endGame();
-                } else if (theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
-                    userTurnEnded = true;
-                    theUser.displayUserHand();
-                    System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
-                    blackJackGame.decideTheWinner();
-                    userInput.close();
-                    blackJackGame.endGame();
-                }
-                theUser.displayUserHand();
-                System.out.println("The new value of your hand is: " + theUser.currentValueOfUserHand());
-            }
-            if (userSelection.equalsIgnoreCase("Stay")) {
+            if (theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
+                userTurnEnded = true;
                 theUser.displayUserHand();
                 System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
-                userTurnEnded = true;
-                theUser.endTurn();
+                blackJackGame.userInstantWin();
+                doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+            }
+
+            while (!userTurnEnded) {
+                System.out.println("Would you like to Hit or Stay? Enter your choice below: ");
+                String userSelection = userInput.nextLine();
+                boolean invalidInput = !userSelection.equalsIgnoreCase("Hit") &&
+                        !userSelection.equalsIgnoreCase("Stay");
+                if (invalidInput) {
+                    System.out.println("Invalid entry. Enter 'Hit' or 'Stay': ");
+                }
+                if (userSelection.equalsIgnoreCase("Hit")) {
+                    theUser.drawCardFromDeck();
+                    if (theUser.currentValueOfUserHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
+                        userTurnEnded = true;
+                        blackJackGame.finalInformationOfUser(theUser);
+                        blackJackGame.decideTheWinner();
+                        doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+                    }
+                    if (theUser.currentValueOfUserHand() == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
+                        userTurnEnded = true;
+                        blackJackGame.finalInformationOfUser(theUser);
+                        blackJackGame.decideTheWinner();
+                        doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+                    } else {
+                        theUser.displayUserHand();
+                        System.out.println("The new value of your hand is: " + theUser.currentValueOfUserHand());
+                    }
+                }
+                if (userSelection.equalsIgnoreCase("Stay")) {
+                    blackJackGame.finalInformationOfUser(theUser);
+                    userTurnEnded = true;
+                    theUser.endTurn();
+                    blackJackGame.finalInformationOfDealer(theDealer);
+                    blackJackGame.decideTheWinner();
+                    doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+                }
             }
         }
-
-        theDealer.checkForDealerMinimumHandValue();
-        theDealer.displayDealerHand();
-        System.out.println("The dealer's hand is worth: " + theDealer.showDealerCardValues());
-        blackJackGame.decideTheWinner();
         userInput.close();
-        blackJackGame.endGame();
     }
 }
