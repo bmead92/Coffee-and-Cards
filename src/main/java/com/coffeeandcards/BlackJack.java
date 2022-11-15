@@ -37,14 +37,25 @@ public class BlackJack {
         user.changeValueOfAce();
     }
 
+    public void endGame() {
+        System.out.println(BlackJackClientUtility.exitMessage());
+        System.exit(0);
+    }
+
+    public void userInstantWin() {
+        if (user.currentValueOfUserHand() == MAX_VALUE_ALLOWED_IN_HAND) {
+            System.out.println("How lucky are you?! You started with 21. You win!");
+        }
+    }
+
     public void decideTheWinner() {
         if ((user.currentValueOfUserHand() == MAX_VALUE_ALLOWED_IN_HAND) &&
                 (dealer.getIntValueOfDealerHand() != MAX_VALUE_ALLOWED_IN_HAND)) {
-            System.out.println("How lucky! You started with 21 and the dealer did not, you win!");
-        } else if((user.currentValueOfUserHand() > MAX_VALUE_ALLOWED_IN_HAND) &&
+            System.out.println("You hit 21! You win!");
+        } else if ((user.currentValueOfUserHand() > MAX_VALUE_ALLOWED_IN_HAND) &&
                 (dealer.getIntValueOfDealerHand() > MAX_VALUE_ALLOWED_IN_HAND)) {
-            System.out.println("You both busted, it's a draw!");
-        } else if ((user.currentValueOfUserHand() <= MAX_VALUE_ALLOWED_IN_HAND) &&
+            System.out.println("You both busted - TOO BAD, SO SAD!");
+        } else if ((user.currentValueOfUserHand() < MAX_VALUE_ALLOWED_IN_HAND) &&
                 (user.currentValueOfUserHand() > dealer.getIntValueOfDealerHand())) {
             System.out.println("Congratulations, you win!");
         } else if ((dealer.getIntValueOfDealerHand() > user.currentValueOfUserHand()) &&
@@ -53,6 +64,11 @@ public class BlackJack {
         } else if ((user.currentValueOfUserHand() <= MAX_VALUE_ALLOWED_IN_HAND) &&
                 (dealer.getIntValueOfDealerHand() > MAX_VALUE_ALLOWED_IN_HAND)) {
             System.out.println("Dealer bust. You win!");
+        } else if (user.currentValueOfUserHand() > MAX_VALUE_ALLOWED_IN_HAND) {
+            System.out.println("Why didn't you stay? You lose!");
+        } else if ((user.currentValueOfUserHand() == MAX_VALUE_ALLOWED_IN_HAND) &&
+                (dealer.getIntValueOfDealerHand() == MAX_VALUE_ALLOWED_IN_HAND)) {
+            System.out.println("What are the odds!? It's a draw!");
         }
     }
 
