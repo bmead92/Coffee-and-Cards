@@ -50,13 +50,21 @@ public class Dealer implements IPlayer {
                     card.getCardRank().equals(CardRank.QUEEN) ||
                     card.getCardRank().equals(CardRank.JACK)) {
                 char firstCharInCardRank = card.getCardRank().name().charAt(0);
-                display.append(firstCharInCardRank).append("  ").append(firstCharInCardRank).append("\n");
-                display.append(" ").append(card.getCardSuit().getIcon()).append("\n");
-                display.append(firstCharInCardRank).append("  ").append(firstCharInCardRank).append("\n");
+                display.append(firstCharInCardRank).append("  ")
+                        .append(firstCharInCardRank).append("\n");
+                display.append(" ").append(card.getCardSuit()
+                        .getIcon()).append("\n");
+                display.append(firstCharInCardRank).append("  ")
+                        .append(firstCharInCardRank).append("\n");
             } else {
-                display.append(card.getCardRank().getValue()).append("  ").append(card.getCardRank().getValue()).append("\n");
-                display.append(" ").append(card.getCardSuit().getIcon()).append("\n");
-                display.append(card.getCardRank().getValue()).append("  ").append(card.getCardRank().getValue()).append("\n");
+                display.append(card.getCardRank().getValue())
+                        .append("  ").append(card.getCardRank()
+                                .getValue()).append("\n");
+                display.append(" ").append(card.getCardSuit()
+                        .getIcon()).append("\n");
+                display.append(card.getCardRank().getValue())
+                        .append("  ").append(card.getCardRank()
+                                .getValue()).append("\n");
             }
         }
         System.out.println(display);
@@ -122,7 +130,6 @@ public class Dealer implements IPlayer {
         while (intValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
             drawCardFromDeck();
         }
-//        return intValueOfDealerHand;
     }
 
     public List<Card> getDealerHand() {
