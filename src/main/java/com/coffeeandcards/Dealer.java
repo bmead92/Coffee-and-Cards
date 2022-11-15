@@ -122,20 +122,24 @@ public class Dealer implements IPlayer {
         return totalValueOfDealerHand;
     }
 
-    public void dealCards() {
+    public void dealCardsToDealer() {
         //TODO: The dealer needs to shuffle the deck of cards
         // and deal 2 cards to every player and themself.
-        int numberOfCardsDealtToEachPlayer = 0;
-        while (numberOfCardsDealtToEachPlayer < STARTING_NUMBER_OF_CARDS) {
+        while ( dealerHand.size() < STARTING_NUMBER_OF_CARDS) {
             //add cards to players hands
             drawCardFromDeck(); // dealer implementation of draw/hit/getCard
+        }
+    }
+
+    public void dealCardsToUser(){
+        while ( dealerHand.size() < STARTING_NUMBER_OF_CARDS) {
             BlackJack.
                     getBlackJackInstance().
                     getUser().
                     drawCardFromDeck(); // user implementation of draw/hit/getCard
-            numberOfCardsDealtToEachPlayer++;
         }
     }
+
 
     public void checkForDealerMinimumHandValue() {
         while (intValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {

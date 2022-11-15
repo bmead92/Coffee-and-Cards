@@ -29,7 +29,8 @@ public class BlackJack {
         deckUtility.shuffleCards(deckUtility.getDeckOfCardsAsAList());
         //Place them into a stack
         deckUtility.placeCardsIntoAStack(deckUtility.getDeckOfCardsAsAList());
-        dealer.dealCards();
+        dealer.dealCardsToDealer();
+        dealer.dealCardsToUser();
         dealer.changeValueOfAce();
         user.changeValueOfAce();
     }
