@@ -58,10 +58,11 @@ public class User {
         for (Card card : userHand) {
             CardRank cardRank = card.getCardRank();
             String cardIcon = card.getCardSuit().getIcon();
-            if (cardRank.equals(CardRank.ACE) ||
+            boolean cardIsAFaceCard = cardRank.equals(CardRank.ACE) ||
                     cardRank.equals(CardRank.KING) ||
                     cardRank.equals(CardRank.QUEEN) ||
-                    cardRank.equals(CardRank.JACK)) {
+                    cardRank.equals(CardRank.JACK);
+            if (cardIsAFaceCard) {
                 char firstCharInCardRank = cardRank.name().charAt(0);
                 display.append(firstCharInCardRank).append("  ").append(firstCharInCardRank).append("\n");
                 display.append(" ").append(cardIcon).append("\n");

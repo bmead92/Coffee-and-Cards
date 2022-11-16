@@ -19,7 +19,6 @@ public class Dealer {
      * The dealer has to have a hand value of at least 17, getCard() is run until that minimum is met.
      * getCard() is also run if the dealer wishes to 'Hit' and get a new card.
      */
-
     public void dealerDrawFromDeck() {
         DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
         int intValueOfDealerHand = getIntValueOfDealerHand();
@@ -33,7 +32,6 @@ public class Dealer {
         setIntValueOfDealerHand(intValueOfDealerHand);
         checkForAcesAndUpdateValueIfNecessary();
     }
-
     public void checkForAcesAndUpdateValueIfNecessary() {
         for (Card card : dealerHand) {
             if (currentValueOfDealerHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
@@ -42,7 +40,6 @@ public class Dealer {
             }
         }
     }
-
     public void displayDealerHand() {
         final User theUser = BlackJack.getBlackJackInstance().getUser();
         List<Card> listToDisplay = new ArrayList<>();
@@ -63,10 +60,11 @@ public class Dealer {
             CardRank cardRank = card.getCardRank();
             String cardIcon = card.getCardSuit()
                     .getIcon();
-            if (cardRank.equals(CardRank.ACE) ||
+            boolean cardIsAFaceCard = cardRank.equals(CardRank.ACE) ||
                     cardRank.equals(CardRank.KING) ||
                     cardRank.equals(CardRank.QUEEN) ||
-                    cardRank.equals(CardRank.JACK)) {
+                    cardRank.equals(CardRank.JACK);
+            if (cardIsAFaceCard) {
                 char firstCharInCardRank = cardRank.name().charAt(0);
                 display.append(firstCharInCardRank).append("  ")
                         .append(firstCharInCardRank).append("\n");
