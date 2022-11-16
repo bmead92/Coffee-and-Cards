@@ -24,15 +24,13 @@ public class BlackJackClient {
         boolean userTurnEnded = false;
         final String bold = "\033[1m";
         final String unBold = "\033[0m";
-
         theDealer.displayCurrentDealerHandAsCards();
         System.out.println("The dealer face-up card has a value of: " + theDealer.displayCurrentDealerHandAsValues());
+        System.out.println("Your starting cards: ");
         displayCardsInHand(theUser.getUserHand());
         System.out.println("The current value of your hand is: " + currentValueOfHand(theUser.getUserHand()));
             if (currentValueOfHand(theUser.getUserHand()) == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                 userTurnEnded = true;
-                displayCardsInHand(theUser.getUserHand());
-                System.out.println("The final value of your hand is: " + currentValueOfHand(theUser.getUserHand()));
                 blackJackGame.userInstantWin();
                 doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
             }
