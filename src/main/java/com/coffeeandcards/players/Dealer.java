@@ -14,8 +14,6 @@ public class Dealer {
     public static final int STARTING_NUMBER_OF_CARDS = 2;
     private int intValueOfDealerHand = 0;
     private List<Card> dealerHand = new ArrayList<>();
-    private final User theUser = BlackJack.getBlackJackInstance().getUser();
-    private final DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
 
     /**
      * The dealer has to have a hand value of at least 17, getCard() is run until that minimum is met.
@@ -23,6 +21,7 @@ public class Dealer {
      */
 
     public void dealerDrawFromDeck() {
+        DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
         int intValueOfDealerHand = getIntValueOfDealerHand();
 
         Card drawnCard = theDeckUtility.drawCardFromDeck();
@@ -45,6 +44,7 @@ public class Dealer {
     }
 
     public void displayDealerHand() {
+        final User theUser = BlackJack.getBlackJackInstance().getUser();
         List<Card> listToDisplay = new ArrayList<>();
         boolean userTurnCompleted = theUser.isTurnCompleted();
         if (!userTurnCompleted) {
@@ -91,6 +91,7 @@ public class Dealer {
      * @return int currentVisibleValueOfDealerHand
      */
     public int showDealerCardValues() {
+        final User theUser = BlackJack.getBlackJackInstance().getUser();
         int currentVisibleValueOfDealerHand = 0;
         boolean isUserTurnCompleted = theUser.isTurnCompleted();
 
@@ -122,6 +123,7 @@ public class Dealer {
     }
 
     public void dealCardsToUser(){
+        final User theUser = BlackJack.getBlackJackInstance().getUser();
         while (theUser.getUserHand().size() < STARTING_NUMBER_OF_CARDS) {
             theUser.userDrawCardFromDeck();
         }

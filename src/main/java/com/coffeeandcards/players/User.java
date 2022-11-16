@@ -12,9 +12,9 @@ public class User {
     private List<Card> userHand = new ArrayList<>();
     private boolean turnCompleted;
     private int intValueOfUserHand = 0;
-    private final DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
 
     public void userDrawCardFromDeck() {
+        final DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
         int intValueOfUserHand = getIntValueOfUserHand();
         Card drawnCard = theDeckUtility.drawCardFromDeck();
         intValueOfUserHand += drawnCard.
