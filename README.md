@@ -2,7 +2,7 @@
 
 #### Created By: Bryce Meadors, Kiaya Anderson, Lok Tamang
 
-![image](https://cdn.pixabay.com/photo/2013/07/13/12/18/cards-159600__180.png)
+![image](https://cdn.pixabay.com/photo/2020/11/16/23/12/poker-5750834__340.jpg)
 
 ## Project Description
 **“Coffee & Cards”** is a Java Blackjack experience. The game is
@@ -16,38 +16,42 @@ the dealer will reveal the value of their cards and the player with the
 card values closest to 21 wins!
 
 ### Card Values
-Ace - Can hold a value of 1 or 11 points; value is based on the other cards
+**Ace Card** - Can hold a value of 1 or 11 points; value is based on the other cards
 in hand.<br>
-Number Cards (2 - 10) - These cards hold face value; i.e. a 2 card is counted
+**Number Cards (2 - 10)** - These cards hold face value; i.e. a 2 card is counted
 as 2 points. <br>
-Face Cards (King, Queen, Jack) - Each of these cards is valued at 10 points.
+**Face Cards (King, Queen, Jack)** - Each of these cards is valued at 10 points.
 
-*The suit of the card has no affect on the value.*
+*The suit of the card has no effect on the value.*
 
 ### Objectives
 **How do you beat the dealer?**
-1. By drawing a hand value that is higher than the dealer’s hand value.
-2. By the dealer drawing a hand value that goes over 21.
-3. By drawing a hand value of 21 on your first two cards,
+- By drawing a hand value that is higher than the dealer’s hand value.
+- By the dealer drawing a hand value that goes over 21.
+- By drawing a hand value of 21 on your first two cards,
 when the dealer does not.
 
 **How do you lose to the dealer?**
-1. Your hand value exceeds 21.
-2. The dealers hand has a greater value than yours at the end of the round
+- Your hand value exceeds 21.
+- The dealers hand has a greater value than yours at the end of the round
 
 ## How to play?
 
 ### Console Instructions
-At the start of the game, both the player and the dealer will be dealt 2 cards;
-the player will have 2 face-up cards and the dealer will have 1 face-up and 1 face-down. <br>
-<br>The console will prompt the user to enter 'Hit' to get another card, 
-or enter 'Stay' to keep their current cards.<br>
-<br>When the user enters 'Stay' or busts (goes over 21), the dealer reveals their cards.<br>
-<br>If the player has a higher value than the dealer without going over 21, they win. 
+- At the start of the game, both the player and the dealer will be dealt 2 cards;
+the player will have 2 face-up cards and the dealer will have 1 face-up and 1 face-down. 
+- The console will prompt the user to enter 'Hit' to get another card, 
+or enter 'Stay' to keep their current cards.
+- When the user enters 'Stay' or busts (goes over 21), the dealer reveals their cards.
+- If the player has a higher value than the dealer without going over 21, they win. 
 
 ### Possible Edge Cases
-1. Both the user and the dealer start with 21. It's a draw - no one wins or loses.
-2. The user starts with 21 and the dealer does not. The user wins.
+- Both the user and the dealer start with 21. This is a draw - no one wins or loses.
+- Both the user and the dealer have the same hand value at the end of the game. This is a draw - no one wins or loses.
+- The user starts with 21 and the dealer does not. The user wins.
 
-## Project Diagram
-![image](https://res.cloudinary.com/kacloud20/image/upload/v1668105659/TLGFinalProject/MicrosoftTeams-image_ykb8qg.png)
+## Project UML Diagram
+Initial Conception of Game -
+![image](https://res.cloudinary.com/kacloud20/image/upload/v1668621505/TLGFinalProject/Screen_Shot_2022-11-16_at_12.55.25_PM_cxwnut.png)
+
+Final Model of Game -
