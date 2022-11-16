@@ -5,12 +5,15 @@ import com.coffeeandcards.deck.Card;
 import com.coffeeandcards.deck.CardRank;
 import com.coffeeandcards.deck.DeckUtility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerUtility {
-    public static void checkForAcesAndUpdateValueIfNecessary(List<Card> theListOfCardsToCheck) {
+    private List<Card> copyOfList;
+    public List<Card> checkForAcesAndUpdateValueIfNecessary(List<Card> theListOfCardsToCheck) {
         int valueOfHandBeingPassedIn = currentValueOfHand(theListOfCardsToCheck);
-        for (Card card : theListOfCardsToCheck) {
+        List<Card> copyOfList = new ArrayList<>(theListOfCardsToCheck);
+        for (Card card : copyOfList) {
             boolean currentCardIsAceAndNeedsValueChangedToOne
                     = valueOfHandBeingPassedIn > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
                     card.getCardRank().equals(CardRank.ACE);
@@ -18,14 +21,15 @@ public class PlayerUtility {
                 card.getCardRank().setValue(1);
             }
         }
+        return copyOfList;
     }
-    public static void drawCardFromDeck(List<Card> theListOfCards) {
+    public void drawCardFromDeck(List<Card> theListOfCards) {
         DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
         Card drawnCard = theDeckUtility.getDeckOfCardsAsAStack().pop();
         theListOfCards.add(drawnCard);
         checkForAcesAndUpdateValueIfNecessary(theListOfCards);
     }
-    public static int currentValueOfHand(List<Card> listOfCards) {
+    public int currentValueOfHand(List<Card> listOfCards) {
         int currentValueOfHand = 0;
         for (Card card : listOfCards) {
             int valueOfCard = card.getCardRank().getValue();
@@ -33,7 +37,7 @@ public class PlayerUtility {
         }
         return currentValueOfHand;
     }
-    public static void displayCardsInHand(List<Card> listOfCards) {
+    public void displayCardsInHand(List<Card> listOfCards) {
         StringBuilder display = new StringBuilder();
         for (Card card : listOfCards) {
             CardRank cardRank = card.getCardRank();
@@ -57,5 +61,11 @@ public class PlayerUtility {
             }
         }
         System.out.println(display);
+    }
+    public List<Card> getCopyOfList() {
+        return copyOfList;
+    }
+    public void setCopyOfList(List<Card> copyOfList) {
+        this.copyOfList = copyOfList;
     }
 }

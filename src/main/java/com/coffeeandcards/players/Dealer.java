@@ -6,13 +6,12 @@ import com.coffeeandcards.deck.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.coffeeandcards.players.PlayerUtility.*;
-
 public class Dealer {
     public static final int MINIMUM_DEALER_HAND_VALUE = 17;
     private List<Card> dealerHand = new ArrayList<>();
 
     public void displayCurrentDealerHandAsCards() {
+        PlayerUtility playerUtility = BlackJack.getBlackJackInstance().getPlayerUtility();
         BlackJack blackJackInstance = BlackJack.getBlackJackInstance();
         final User theUser = blackJackInstance.getUser();
         List<Card> listToDisplay = new ArrayList<>();
@@ -20,10 +19,10 @@ public class Dealer {
         if (!userTurnCompleted) {
             System.out.println("Dealer's face-up card");
             listToDisplay.add(dealerHand.get(0));
-            displayCardsInHand(listToDisplay);
+            playerUtility.displayCardsInHand(listToDisplay);
         } else {
             System.out.println("Dealer's final hand");
-            displayCardsInHand(dealerHand);
+            playerUtility.displayCardsInHand(dealerHand);
         }
     }
 
@@ -35,11 +34,12 @@ public class Dealer {
      */
     public int displayCurrentDealerHandAsValues() {
         BlackJack blackJackInstance = BlackJack.getBlackJackInstance();
+        PlayerUtility playerUtility = BlackJack.getBlackJackInstance().getPlayerUtility();
         final User theUser = blackJackInstance.getUser();
         int currentVisibleValueOfDealerHand = 0;
         boolean isUserTurnCompleted = theUser.isTurnCompleted();
         if (isUserTurnCompleted) {
-            currentVisibleValueOfDealerHand = currentValueOfHand(dealerHand);
+            currentVisibleValueOfDealerHand = playerUtility.currentValueOfHand(dealerHand);
         } else {
             currentVisibleValueOfDealerHand = dealerHand.get(0).
                     getCardRank().
@@ -48,10 +48,11 @@ public class Dealer {
         return currentVisibleValueOfDealerHand;
     }
     public void checkForDealerMinimumHandValue() {
-        int currentValueOfDealerHand = currentValueOfHand(dealerHand);
+        PlayerUtility playerUtility = BlackJack.getBlackJackInstance().getPlayerUtility();
+        int currentValueOfDealerHand = playerUtility.currentValueOfHand(dealerHand);
             while (currentValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
-            drawCardFromDeck(dealerHand);
-            currentValueOfDealerHand = currentValueOfHand(dealerHand);
+                playerUtility.drawCardFromDeck(dealerHand);
+            currentValueOfDealerHand = playerUtility.currentValueOfHand(dealerHand);
         }
     }
     public List<Card> getDealerHand() {

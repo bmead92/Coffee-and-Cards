@@ -11,8 +11,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.coffeeandcards.players.PlayerUtility.currentValueOfHand;
-import static com.coffeeandcards.players.PlayerUtility.drawCardFromDeck;
 import static org.junit.Assert.*;
 
 public class DealerTest {
