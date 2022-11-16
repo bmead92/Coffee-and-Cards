@@ -19,7 +19,7 @@ public class PlayerUtility {
     }
     public static void drawCardFromDeck(List<Card> theListOfCards) {
         DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
-        Card drawnCard = theDeckUtility.drawCardFromDeck();
+        Card drawnCard = theDeckUtility.getDeckOfCardsAsAStack().pop();
         theListOfCards.add(drawnCard);
         checkForAcesAndUpdateValueIfNecessary(theListOfCards);
     }

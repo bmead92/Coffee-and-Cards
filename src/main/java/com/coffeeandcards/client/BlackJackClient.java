@@ -64,7 +64,8 @@ public class BlackJackClient {
                 if (userSelectedStay) {
                     blackJackGame.finalInformationOfUser(theUser);
                     userTurnEnded = true;
-                    theUser.endTurn();
+                    theUser.setTurnCompleted(true);
+                    System.out.println("User turn is over. Let's see what the dealer has!");
                     blackJackGame.finalInformationOfDealer(theDealer);
                     blackJackGame.decideTheWinner();
                     doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);

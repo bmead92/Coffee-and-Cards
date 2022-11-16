@@ -38,10 +38,6 @@ public class DeckUtility {
         }
     }
 
-    public Card drawCardFromDeck() {
-        return getDeckOfCardsAsAStack().pop();
-    }
-
     public List<Card> getDeckOfCardsAsAList() {
         return deckOfCardsAsAList;
     }

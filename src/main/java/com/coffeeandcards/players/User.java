@@ -9,10 +9,6 @@ public class User {
     private List<Card> userHand = new ArrayList<>();
     private boolean turnCompleted;
 
-    public void endTurn() {
-        setTurnCompleted(true);
-        System.out.println("User turn is over. Let's see what the dealer has!");
-    }
     public boolean isTurnCompleted() {
         return turnCompleted;
     }

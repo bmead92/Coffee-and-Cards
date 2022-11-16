@@ -7,7 +7,7 @@
 ## Project Description
 **“Coffee & Cards”** is a Java Blackjack experience. The game is
 a console-based application where a user will attempt to
-beat the dealer by get their card values to 21, or as close
+beat the dealer by getting their card values to 21, or as close
 as possible without going over. At the beginning of the
 game, the user will be dealt two cards and will have the
 opportunity to ‘Hit’ or receive another card to increase the
@@ -16,7 +16,7 @@ the dealer will reveal the value of their cards and the player with the
 card values closest to 21 wins!
 
 ### Card Values
-**Ace Card** - Can hold a value of 1 or 11 points; value is based on the other cards
+**Ace Card** - It can hold a value of 1 or 11 points; value is based on the other cards
 in hand.<br>
 **Number Cards (2 - 10)** - These cards hold face value; i.e. a 2 card is counted
 as 2 points. <br>
