@@ -42,7 +42,6 @@ public class DeckUtility {
         return getDeckOfCardsAsAStack().pop();
     }
 
-
     public List<Card> getDeckOfCardsAsAList() {
         return deckOfCardsAsAList;
     }

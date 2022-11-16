@@ -72,7 +72,7 @@ public class DealerTest {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TEN));
         blackJackInstance.getDealer().setDealerHand(testListOfCards);
         blackJackInstance.getUser().setTurnCompleted(true);
-        int actualValue = blackJackInstance.getDealer().showDealerCardValues();
+        int actualValue = blackJackInstance.getDealer().displayCurrentDealerHandAsValues();
         int expectedValue = 18;
         assertEquals(expectedValue, actualValue);
     }
@@ -84,7 +84,7 @@ public class DealerTest {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TEN));
         blackJackInstance.getDealer().setDealerHand(testListOfCards);
         blackJackInstance.getUser().setTurnCompleted(false);
-        int actualValue = blackJackInstance.getDealer().showDealerCardValues();
+        int actualValue = blackJackInstance.getDealer().displayCurrentDealerHandAsValues();
         int expectedValue = 8;
         assertEquals(expectedValue, actualValue);
     }

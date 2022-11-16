@@ -6,12 +6,15 @@ import com.coffeeandcards.players.User;
 
 import java.util.Scanner;
 
+import static com.coffeeandcards.players.PlayerUtility.*;
+
 public class BlackJack {
     private static BlackJack blackJackInstance = null;
     private DeckUtility deckUtility;
     private Dealer dealer;
     private User user;
     public static final int MAX_VALUE_ALLOWED_IN_HAND = 21;
+    public static final int STARTING_NUMBER_OF_CARDS = 2;
 
     private BlackJack(DeckUtility deckUtility, Dealer dealer, User user) {
         setDeckUtility(deckUtility);
@@ -25,31 +28,36 @@ public class BlackJack {
         }
         return blackJackInstance;
     }
-
     public void setUpGame() {
         deckUtility.fillDeckWithCards();
         deckUtility.shuffleCards(deckUtility.getDeckOfCardsAsAList());
         deckUtility.placeCardsIntoAStack(deckUtility.getDeckOfCardsAsAList());
-        dealer.dealCardsToDealer();
-        dealer.dealCardsToUser();
-        dealer.checkForAcesAndUpdateValueIfNecessary();
-        user.userCheckForAcesAndUpdateValueIfNecessary();
+        initialDealOfCards();
+        checkForAcesAndUpdateValueIfNecessary(dealer.getDealerHand());
+        checkForAcesAndUpdateValueIfNecessary(user.getUserHand());
     }
-
-
+    public void initialDealOfCards() {
+        int cardsDealt = 0;
+        while (cardsDealt < STARTING_NUMBER_OF_CARDS) {
+            drawCardFromDeck(dealer.getDealerHand());
+            drawCardFromDeck(user.getUserHand());
+            cardsDealt++;
+        }
+    }
     public void finalInformationOfUser(User theUser) {
-        theUser.displayUserHand();
-        System.out.println("The final value of your hand is: " + theUser.currentValueOfUserHand());
+        displayCardsInHand(theUser.getUserHand());
+        System.out.println("The final value of your hand is: " + currentValueOfHand(user.getUserHand()));
     }
 
     public void finalInformationOfDealer(Dealer theDealer) {
         theDealer.checkForDealerMinimumHandValue();
-        theDealer.displayDealerHand();
-        System.out.println("The dealer's hand is worth: " + theDealer.showDealerCardValues());
+        theDealer.displayCurrentDealerHandAsCards();
+        System.out.println("The dealer's hand is worth: " + theDealer.displayCurrentDealerHandAsValues());
     }
 
     public void userInstantWin() {
-        if (user.currentValueOfUserHand() == MAX_VALUE_ALLOWED_IN_HAND) {
+        int valueOfUserHand = currentValueOfHand(user.getUserHand());
+        if (valueOfUserHand == MAX_VALUE_ALLOWED_IN_HAND) {
             System.out.println("How lucky are you?! You started with 21. You win!");
         }
     }
@@ -76,8 +84,8 @@ public class BlackJack {
     }
 
     public void decideTheWinner() {
-        int valueOfUserHand = user.currentValueOfUserHand();
-        int valueOfDealerHand = dealer.getIntValueOfDealerHand();
+        int valueOfUserHand = currentValueOfHand(user.getUserHand());
+        int valueOfDealerHand = currentValueOfHand(dealer.getDealerHand());
         int twentyOne = MAX_VALUE_ALLOWED_IN_HAND;
 
         if ((valueOfUserHand == twentyOne) &&
