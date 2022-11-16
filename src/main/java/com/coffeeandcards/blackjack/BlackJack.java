@@ -68,7 +68,7 @@ public class BlackJack {
         System.out.println(BlackJackClientUtility.playAgainMessage());
         playAgain = scanner.nextLine();
         while (!playAgain.equalsIgnoreCase("No") &&
-        !playAgain.equalsIgnoreCase("Yes")) {
+                !playAgain.equalsIgnoreCase("Yes")) {
             System.out.println("Invalid input, please type 'yes' or 'no'");
             playAgain = scanner.nextLine();
         }
