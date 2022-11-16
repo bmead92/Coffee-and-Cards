@@ -9,14 +9,12 @@ import static com.coffeeandcards.players.PlayerUtility.*;
 
 import java.util.Scanner;
 
-
 public class BlackJackClient {
     public static void main(String[] args) {
         boolean doesPlayerWantToPlayAgain = true;
         Scanner userInput = new Scanner(System.in);
         while (doesPlayerWantToPlayAgain) {
         System.out.println(BlackJackClientUtility.welcomeMessage());
-
         BlackJack blackJackGame = BlackJack.createBlackJackGame();
         blackJackGame.setUpGame();
         Dealer theDealer = blackJackGame.getDealer();
