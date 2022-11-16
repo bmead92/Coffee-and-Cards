@@ -11,8 +11,10 @@ public class PlayerUtility {
     public static void checkForAcesAndUpdateValueIfNecessary(List<Card> theListOfCardsToCheck) {
         int valueOfHandBeingPassedIn = currentValueOfHand(theListOfCardsToCheck);
         for (Card card : theListOfCardsToCheck) {
-            if (valueOfHandBeingPassedIn > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
-                    card.getCardRank().equals(CardRank.ACE)) {
+            boolean currentCardIsAceAndNeedsValueChangedToOne
+                    = valueOfHandBeingPassedIn > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
+                    card.getCardRank().equals(CardRank.ACE);
+            if (currentCardIsAceAndNeedsValueChangedToOne) {
                 card.getCardRank().setValue(1);
             }
         }
