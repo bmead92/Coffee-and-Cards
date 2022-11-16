@@ -9,8 +9,6 @@ import com.coffeeandcards.players.User;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.coffeeandcards.players.PlayerUtility.*;
-
 public class BlackJack {
     private static BlackJack blackJackInstance = null;
     private DeckUtility deckUtility;
