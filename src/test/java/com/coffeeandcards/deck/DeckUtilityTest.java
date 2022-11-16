@@ -31,7 +31,12 @@ public class DeckUtilityTest {
     @Test
     public void testPlaceCardsIntoAStack() {
         List<Card> testCards = new ArrayList<>();
+        testCards.add(new Card(CardSuit.HEARTS, CardRank.TEN));
+        testCards.add(new Card(CardSuit.SPADES, CardRank.FIVE));
+        testCards.add(new Card(CardSuit.CLUBS, CardRank.SIX));
+        testCards.add(new Card(CardSuit.DIAMONDS, CardRank.TWO));
         deckUtility.placeCardsIntoAStack(testCards);
-
+        int size = deckUtility.getDeckOfCardsAsAStack().size();
+        assertEquals(4, size);
     }
 }
