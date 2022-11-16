@@ -1,5 +1,9 @@
 package com.coffeeandcards;
 
+import com.coffeeandcards.blackjack.BlackJack;
+import com.coffeeandcards.deck.Card;
+import com.coffeeandcards.deck.CardRank;
+import com.coffeeandcards.deck.CardSuit;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,13 +26,13 @@ public class DealerTest {
     @Test
     public void testDealerDrawCardFromDeck() {
         int actualValue = blackJackInstance.getDealer().getDealerHand().size();
-        blackJackInstance.getDealer().drawCardFromDeck();
+        blackJackInstance.getDealer().dealerDrawFromDeck();
         assertEquals(2, actualValue);
         actualValue = blackJackInstance.getDealer().getDealerHand().size();
-        blackJackInstance.getDealer().drawCardFromDeck();
+        blackJackInstance.getDealer().dealerDrawFromDeck();
         assertEquals(3, actualValue);
         actualValue = blackJackInstance.getDealer().getDealerHand().size();
-        blackJackInstance.getDealer().drawCardFromDeck();
+        blackJackInstance.getDealer().dealerDrawFromDeck();
         assertEquals(4, actualValue);
     }
 
@@ -37,16 +41,16 @@ public class DealerTest {
         List<Card> testListOfCards = new ArrayList<>();
         blackJackInstance.getDealer().setDealerHand(testListOfCards);
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
-        blackJackInstance.getDealer().changeValueOfAce();
+        blackJackInstance.getDealer().checkForAcesAndUpdateValueIfNecessary();
         int actualValue = testListOfCards.get(0).getCardRank().getValue();
         assertEquals(11, actualValue);
 
         testListOfCards.add(new Card(CardSuit.SPADES, CardRank.ACE));
-        blackJackInstance.getDealer().changeValueOfAce();
+        blackJackInstance.getDealer().checkForAcesAndUpdateValueIfNecessary();
         actualValue = testListOfCards.get(0).getCardRank().getValue();
         assertEquals(1, actualValue);
         testListOfCards.add(new Card(CardSuit.DIAMONDS, CardRank.ACE));
-        blackJackInstance.getDealer().changeValueOfAce();
+        blackJackInstance.getDealer().checkForAcesAndUpdateValueIfNecessary();
         actualValue = testListOfCards.get(0).getCardRank().getValue();
         assertEquals(1, actualValue);
     }

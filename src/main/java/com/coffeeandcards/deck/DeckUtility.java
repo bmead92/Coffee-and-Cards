@@ -1,4 +1,4 @@
-package com.coffeeandcards;
+package com.coffeeandcards.deck;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,11 +33,9 @@ public class DeckUtility {
     }
 
     public void placeCardsIntoAStack(List<Card> deckOfCards) {
-        Stack<Card> deckOfCardsInAStack = deckOfCardsAsAStack;
         for (Card card : deckOfCards) {
-            deckOfCardsInAStack.push(card);
+            deckOfCardsAsAStack.push(card);
         }
-        setDeckOfCardsAsAStack(deckOfCardsInAStack);
     }
 
     public Card drawCardFromDeck() {

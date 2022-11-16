@@ -1,4 +1,8 @@
-package com.coffeeandcards;
+package com.coffeeandcards.blackjack;
+
+import com.coffeeandcards.players.Dealer;
+import com.coffeeandcards.deck.DeckUtility;
+import com.coffeeandcards.players.User;
 
 import java.util.Scanner;
 
@@ -23,16 +27,13 @@ public class BlackJack {
     }
 
     public void setUpGame() {
-        //Fill a List<Card> with 52 cards
         deckUtility.fillDeckWithCards();
-        //Shuffle the cards
         deckUtility.shuffleCards(deckUtility.getDeckOfCardsAsAList());
-        //Place them into a stack
         deckUtility.placeCardsIntoAStack(deckUtility.getDeckOfCardsAsAList());
         dealer.dealCardsToDealer();
         dealer.dealCardsToUser();
-        dealer.changeValueOfAce();
-        user.changeValueOfAce();
+        dealer.checkForAcesAndUpdateValueIfNecessary();
+        user.userCheckForAcesAndUpdateValueIfNecessary();
     }
 
 
@@ -137,9 +138,5 @@ public class BlackJack {
 
     public static BlackJack getBlackJackInstance() {
         return blackJackInstance;
-    }
-
-    public static void setBlackJackInstance(BlackJack blackJackInstance) {
-        BlackJack.blackJackInstance = blackJackInstance;
     }
 }

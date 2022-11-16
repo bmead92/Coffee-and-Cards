@@ -1,5 +1,9 @@
 package com.coffeeandcards;
 
+import com.coffeeandcards.blackjack.BlackJack;
+import com.coffeeandcards.deck.Card;
+import com.coffeeandcards.deck.CardRank;
+import com.coffeeandcards.deck.CardSuit;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,12 +28,12 @@ public class UserTest {
                 getUser().
                 getUserHand().size();
         assertEquals(2, actualValue);
-        blackJackInstance.getUser().drawCardFromDeck();
+        blackJackInstance.getUser().userDrawCardFromDeck();
         actualValue = blackJackInstance.getUser().
                 getUserHand().
                 size();
         assertEquals(3, actualValue);
-        blackJackInstance.getUser().drawCardFromDeck();
+        blackJackInstance.getUser().userDrawCardFromDeck();
         actualValue = blackJackInstance.getUser().
                 getUserHand().
                 size();
@@ -50,11 +54,11 @@ public class UserTest {
         List<Card> testListOfCards = new ArrayList<>();
         blackJackInstance.getUser().setUserHand(testListOfCards);
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
-        blackJackInstance.getUser().changeValueOfAce();
+        blackJackInstance.getUser().userCheckForAcesAndUpdateValueIfNecessary();
         int actualValue = testListOfCards.get(0).getCardRank().getValue();
         assertEquals(11, actualValue);
         testListOfCards.add(new Card(CardSuit.SPADES, CardRank.ACE));
-        blackJackInstance.getUser().changeValueOfAce();
+        blackJackInstance.getUser().userCheckForAcesAndUpdateValueIfNecessary();
         actualValue = testListOfCards.get(0).getCardRank().getValue();
         assertEquals(1, actualValue);
     }

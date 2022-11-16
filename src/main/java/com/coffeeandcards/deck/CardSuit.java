@@ -1,4 +1,4 @@
-package com.coffeeandcards;
+package com.coffeeandcards.deck;
 
 public enum CardSuit {
     SPADES("\u2660\uFE0F"),

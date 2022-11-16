@@ -1,4 +1,4 @@
-package com.coffeeandcards;
+package com.coffeeandcards.deck;
 
 public class Card {
     private CardSuit suit;
@@ -25,6 +25,7 @@ public class Card {
         this.value = value;
     }
 
+    @Override
     public String toString() {
         return "Card: " + getCardRank() + " of " + getCardSuit().getIcon() +
                 "\n Worth " + getCardRank().getValue() + "\n";

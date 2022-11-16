@@ -1,4 +1,9 @@
-package com.coffeeandcards;
+package client;
+
+import com.coffeeandcards.blackjack.BlackJack;
+import com.coffeeandcards.blackjack.BlackJackClientUtility;
+import com.coffeeandcards.players.Dealer;
+import com.coffeeandcards.players.User;
 
 import java.util.Scanner;
 
@@ -37,7 +42,7 @@ public class BlackJackClient {
                     System.out.println("Invalid entry. Enter 'Hit' or 'Stay': ");
                 }
                 if (userSelection.equalsIgnoreCase("Hit")) {
-                    theUser.drawCardFromDeck();
+                    theUser.userDrawCardFromDeck();
                     if (theUser.currentValueOfUserHand() > BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                         userTurnEnded = true;
                         blackJackGame.finalInformationOfUser(theUser);

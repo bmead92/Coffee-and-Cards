@@ -1,4 +1,4 @@
-package com.coffeeandcards;
+package com.coffeeandcards.deck;
 
 public enum CardRank {
     TWO(2),
