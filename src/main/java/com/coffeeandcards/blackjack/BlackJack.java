@@ -41,7 +41,7 @@ public class BlackJack {
         List<Card> copyOfUserHand = playerUtility.checkForAcesAndUpdateValueIfNecessary(user.getUserHand());
         user.setUserHand(copyOfUserHand);
     }
-    public void initialDealOfCards() {
+    public void initialDealOfCards() { // test lok
         int cardsDealt = 0;
         while (cardsDealt < STARTING_NUMBER_OF_CARDS) {
             playerUtility.drawCardFromDeck(dealer.getDealerHand());
@@ -60,7 +60,7 @@ public class BlackJack {
         System.out.println("The dealer's hand is worth: " + theDealer.displayCurrentDealerHandAsValues());
     }
 
-    public void userInstantWin() {
+    public void userInstantWin() { //test lok
         int valueOfUserHand = playerUtility.currentValueOfHand(user.getUserHand());
         if (valueOfUserHand == MAX_VALUE_ALLOWED_IN_HAND) {
             System.out.println("How lucky are you?! You started with 21. You win!");
