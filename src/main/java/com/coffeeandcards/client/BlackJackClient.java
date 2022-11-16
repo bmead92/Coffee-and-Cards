@@ -1,4 +1,4 @@
-package com.coffeeandcards.blackjack.client;
+package com.coffeeandcards.client;
 
 import com.coffeeandcards.blackjack.BlackJack;
 import com.coffeeandcards.blackjack.BlackJackClientUtility;
