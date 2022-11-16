@@ -132,7 +132,7 @@ public class Dealer implements IPlayer {
     }
 
     public void dealCardsToUser(){
-        while ( dealerHand.size() < STARTING_NUMBER_OF_CARDS) {
+        while ( BlackJack.getBlackJackInstance().getUser().getUserHand().size() < STARTING_NUMBER_OF_CARDS) {
             BlackJack.
                     getBlackJackInstance().
                     getUser().
