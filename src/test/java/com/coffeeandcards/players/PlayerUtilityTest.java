@@ -11,7 +11,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.coffeeandcards.players.PlayerUtility.*;
 import static org.junit.Assert.*;
 
 public class PlayerUtilityTest {
@@ -27,126 +26,146 @@ public class PlayerUtilityTest {
         playerUtility = BlackJack.getBlackJackInstance().getPlayerUtility();
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithOnlyAnAce() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithOnlyAnAce() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(11, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndTwo() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndTwo() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TWO));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(13, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndThree() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndThree() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.THREE));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(14, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndFour() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndFour() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.FOUR));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(15, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndFive() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndFive() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.FIVE));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(16, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndSix() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndSix() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.SIX));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(17, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndSeven() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndSeven() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.SEVEN));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(18, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndEight() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndEight() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.EIGHT));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(19, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndNine() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndNine() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.NINE));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(20, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndTen() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndTen() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TEN));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndJack() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryAceAndJack() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.JACK));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndQueen() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryAceAndQueen() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.QUEEN));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndKing() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryAceAndKing() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.KING));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
 
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryWithAceAndAce() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndAce() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
-        assertEquals(2, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
+        assertEquals(12, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
 
     @Test
-    public void testCheckForAcesAndUpdateValueIfNecessaryTriggersUpdate() {
+    public void ttestCheckForAcesAndChangeCardRankIfNecessaryTriggers() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.KING));
         testListOfCards.add(new Card(CardSuit.DIAMONDS, CardRank.KING));
-        testListOfCards = playerUtility.checkForAcesAndUpdateValueIfNecessary(testListOfCards);
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
+    }
+
+    @Test
+    public void testCheckForAcesAndChangeCardRankIfNecessaryMultipleAcesAndDemotesBoth() {
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.KING));
+        testListOfCards.add(new Card(CardSuit.DIAMONDS, CardRank.ACE));
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
+        playerUtility.setCopyOfList(testListOfCards);
+        assertEquals(12, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
+    }
+
+    @Test
+    public void testCheckForAcesAndChangeCardRankIfNecessaryTriggersUpdateTwoAcesButOnlyDemotesOne() {
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
+        testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.EIGHT));
+        testListOfCards.add(new Card(CardSuit.DIAMONDS, CardRank.ACE));
+        testListOfCards = playerUtility.checkForAcesAndChangeCardRankIfNecessary(testListOfCards);
+        playerUtility.setCopyOfList(testListOfCards);
+        assertEquals(20, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
     @Test
     public void testDrawCardFromDeckIncreasesHandValue() {

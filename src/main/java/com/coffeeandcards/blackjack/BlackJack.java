@@ -1,7 +1,6 @@
 package com.coffeeandcards.blackjack;
 
 import com.coffeeandcards.deck.Card;
-import com.coffeeandcards.deck.CardRank;
 import com.coffeeandcards.players.Dealer;
 import com.coffeeandcards.deck.DeckUtility;
 import com.coffeeandcards.players.PlayerUtility;
@@ -37,9 +36,9 @@ public class BlackJack {
         deckUtility.shuffleCards(deckUtility.getDeckOfCardsAsAList());
         deckUtility.placeCardsIntoAStack(deckUtility.getDeckOfCardsAsAList());
         initialDealOfCards();
-        List<Card> copyOfDealerHand = playerUtility.checkForAcesAndUpdateValueIfNecessary(dealer.getDealerHand());
+        List<Card> copyOfDealerHand = playerUtility.checkForAcesAndChangeCardRankIfNecessary(dealer.getDealerHand());
         dealer.setDealerHand(copyOfDealerHand);
-        List<Card> copyOfUserHand = playerUtility.checkForAcesAndUpdateValueIfNecessary(user.getUserHand());
+        List<Card> copyOfUserHand = playerUtility.checkForAcesAndChangeCardRankIfNecessary(user.getUserHand());
         user.setUserHand(copyOfUserHand);
     }
     public void initialDealOfCards() { // test lok

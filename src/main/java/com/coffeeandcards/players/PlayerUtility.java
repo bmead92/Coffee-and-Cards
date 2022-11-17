@@ -10,12 +10,12 @@ import java.util.List;
 
 public class PlayerUtility {
     private List<Card> copyOfList;
-    public List<Card> checkForAcesAndUpdateValueIfNecessary(List<Card> theListOfCardsToCheck) {
-        int valueOfHandBeingPassedIn = currentValueOfHand(theListOfCardsToCheck);
+    public List<Card> checkForAcesAndChangeCardRankIfNecessary(List<Card> theListOfCardsToCheck) {
         List<Card> copyOfList = new ArrayList<>(theListOfCardsToCheck);
         for (Card card : copyOfList) {
+            int currentValueOfHand = currentValueOfHand(theListOfCardsToCheck);
             boolean currentCardIsAceAndNeedsValueChangedToOne
-                    = valueOfHandBeingPassedIn > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
+                    = currentValueOfHand > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
                     card.getCardRank().equals(CardRank.ACE);
             if (currentCardIsAceAndNeedsValueChangedToOne) {
                 card.setValue(CardRank.DEMOTED_ACE);
@@ -27,7 +27,7 @@ public class PlayerUtility {
         DeckUtility theDeckUtility = BlackJack.getBlackJackInstance().getDeckUtility();
         Card drawnCard = theDeckUtility.getDeckOfCardsAsAStack().pop();
         theListOfCards.add(drawnCard);
-        checkForAcesAndUpdateValueIfNecessary(theListOfCards);
+        checkForAcesAndChangeCardRankIfNecessary(theListOfCards);
     }
     public int currentValueOfHand(List<Card> listOfCards) {
         int currentValueOfHand = 0;
