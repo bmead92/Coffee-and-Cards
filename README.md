@@ -57,4 +57,4 @@ Initial Conception of Game -
 ![image](https://res.cloudinary.com/kacloud20/image/upload/v1668621505/TLGFinalProject/Screen_Shot_2022-11-16_at_12.55.25_PM_cxwnut.png)
 
 Final Model of Game -
-![image](https://res.cloudinary.com/kacloud20/image/upload/v1668711142/TLGFinalProject/Screen_Shot_2022-11-17_at_1.52.07_PM_gw4cqi.png)
+![image](https://res.cloudinary.com/kacloud20/image/upload/v1668711685/TLGFinalProject/Screen_Shot_2022-11-17_at_2.00.14_PM_rvlqug.png)
