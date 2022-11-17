@@ -6,7 +6,7 @@ public class BlackJackClientUtility {
     public static String welcomeMessage() {
         final String bold = "\033[1m";
         final String unBold = "\033[0m";
-        return CardSuit.HEARTS.getIcon() +
+        return "\n" + CardSuit.HEARTS.getIcon() +
                 CardSuit.CLUBS.getIcon() +
                 "Welcome to Coffee and Cards, a BlackJack experience in Java!" +
                 CardSuit.DIAMONDS.getIcon() +
