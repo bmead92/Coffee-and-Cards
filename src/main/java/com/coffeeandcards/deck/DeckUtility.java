@@ -20,6 +20,9 @@ public class DeckUtility {
         CardRank[] cardRanks = CardRank.values();
         CardSuit[] cardSuits = CardSuit.values();
         for (CardRank cardRank : cardRanks) {
+            if (cardRank.equals(CardRank.DEMOTED_ACE)) {
+                continue;
+            }
             for (CardSuit cardSuit : cardSuits) {
                 deckOfCards.add(new Card(cardSuit, cardRank));
             }
