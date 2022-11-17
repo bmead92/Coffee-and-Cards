@@ -6,7 +6,8 @@ public enum CardSuit {
     DIAMONDS("\u2666\uFE0F"),
     CLUBS("\u2663\uFE0F");
     private final String icon;
-    CardSuit(String icon) {
+
+    CardSuit(final String icon) {
         this.icon = icon;
     }
 

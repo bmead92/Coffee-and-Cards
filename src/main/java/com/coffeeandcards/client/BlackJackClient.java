@@ -6,8 +6,6 @@ import com.coffeeandcards.players.Dealer;
 import com.coffeeandcards.players.PlayerUtility;
 import com.coffeeandcards.players.User;
 
-import static com.coffeeandcards.players.PlayerUtility.*;
-
 import java.util.Scanner;
 
 public class BlackJackClient {
@@ -15,21 +13,24 @@ public class BlackJackClient {
         boolean doesPlayerWantToPlayAgain = true;
         Scanner userInput = new Scanner(System.in);
         while (doesPlayerWantToPlayAgain) {
-        System.out.println(BlackJackClientUtility.welcomeMessage());
-        BlackJack blackJackGame = BlackJack.createBlackJackGame();
-        blackJackGame.setUpGame();
-        Dealer theDealer = blackJackGame.getDealer();
-        User theUser = blackJackGame.getUser();
-        PlayerUtility playerUtility = blackJackGame.getPlayerUtility();
-        boolean userTurnEnded = false;
-        final String bold = "\033[1m";
-        final String unBold = "\033[0m";
-        theDealer.displayCurrentDealerHandAsCards();
-        System.out.println("The dealer face-up card has a value of: " + theDealer.displayCurrentDealerHandAsValues());
-        System.out.println("Your starting cards: ");
-        playerUtility.displayCardsInHand(theUser.getUserHand());
-        System.out.println("The current value of your hand is: " + playerUtility.currentValueOfHand(theUser.getUserHand()));
-            if (playerUtility.currentValueOfHand(theUser.getUserHand()) == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
+            System.out.println(BlackJackClientUtility.welcomeMessage());
+            BlackJack blackJackGame = BlackJack.createBlackJackGame();
+            blackJackGame.setUpGame();
+            Dealer theDealer = blackJackGame.getDealer();
+            User theUser = blackJackGame.getUser();
+            PlayerUtility playerUtility = blackJackGame.getPlayerUtility();
+            boolean userTurnEnded = false;
+            final String bold = "\033[1m";
+            final String unBold = "\033[0m";
+            theDealer.displayCurrentDealerHandAsCards();
+            System.out.println("The dealer face-up card has a value of: " +
+                    theDealer.displayCurrentDealerHandAsValues());
+            System.out.println("Your starting cards: ");
+            playerUtility.displayCardsInHand(theUser.getUserHand());
+            System.out.println("The current value of your hand is: " +
+                    playerUtility.currentValueOfHand(theUser.getUserHand()));
+            if (playerUtility.currentValueOfHand(theUser.getUserHand()) ==
+                    BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                 userTurnEnded = true;
                 blackJackGame.userInstantWin();
                 doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
@@ -46,17 +47,21 @@ public class BlackJackClient {
                 }
                 if (userSelectedHit) {
                     playerUtility.drawCardFromDeck(theUser.getUserHand());
-                    if (playerUtility.currentValueOfHand(theUser.getUserHand()) > BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
+                    if (playerUtility.currentValueOfHand(theUser.getUserHand()) >
+                            BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                         userTurnEnded = true;
                         blackJackGame.finalInformationOfUser(theUser);
                         blackJackGame.decideTheWinner();
-                        doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+                        doesPlayerWantToPlayAgain = blackJackGame.
+                                checkIfPlayerWantsToStartANewRound(userInput);
                     }
-                    if (playerUtility.currentValueOfHand(theUser.getUserHand()) == BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
+                    if (playerUtility.currentValueOfHand(theUser.getUserHand()) ==
+                            BlackJack.MAX_VALUE_ALLOWED_IN_HAND) {
                         userTurnEnded = true;
                         blackJackGame.finalInformationOfUser(theUser);
                         blackJackGame.decideTheWinner();
-                        doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+                        doesPlayerWantToPlayAgain = blackJackGame.
+                                checkIfPlayerWantsToStartANewRound(userInput);
                     } else {
                         playerUtility.displayCardsInHand(theUser.getUserHand());
                         System.out.println("The new value of your hand is: " +
@@ -70,7 +75,8 @@ public class BlackJackClient {
                     System.out.println("User turn is over. Let's see what the dealer has!");
                     blackJackGame.finalInformationOfDealer(theDealer);
                     blackJackGame.decideTheWinner();
-                    doesPlayerWantToPlayAgain = blackJackGame.checkIfPlayerWantsToStartANewRound(userInput);
+                    doesPlayerWantToPlayAgain = blackJackGame.
+                            checkIfPlayerWantsToStartANewRound(userInput);
                 }
             }
         }

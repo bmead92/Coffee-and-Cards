@@ -2,31 +2,27 @@ package com.coffeeandcards.deck;
 
 public class Card {
     private CardSuit cardSuit;
-    private CardRank getCardValue;
+    private CardRank cardRank;
 
-    public Card(CardSuit suit, CardRank value) {
-        setCardSuit(suit);
-        setGetCardValue(value);
+    public Card(CardSuit cardSuit, CardRank cardRank) {
+        setCardSuit(cardSuit);
+        setCardRank(cardRank);
     }
 
-    public CardRank getCardRank() {
-        return getCardValue;
-    }
-
-    public void setCardSuit(CardSuit cardSuit) {
+    public void setCardSuit(final CardSuit cardSuit) {
         this.cardSuit = cardSuit;
     }
 
-    public void setGetCardValue(CardRank getCardValue) {
-        this.getCardValue = getCardValue;
+    public void setCardRank(final CardRank cardRank) {
+        this.cardRank = cardRank;
     }
 
     public CardSuit getCardSuit() {
         return cardSuit;
     }
 
-    public CardRank getGetCardValue() {
-        return getCardValue;
+    public CardRank getCardRank() {
+        return cardRank;
     }
 
 }

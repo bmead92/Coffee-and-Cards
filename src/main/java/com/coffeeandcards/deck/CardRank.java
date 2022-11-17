@@ -16,17 +16,14 @@ public enum CardRank {
     ACE(11),
     A_DEMOTED_ACE(1);
 
-    private int value;
-    CardRank(int value) {
-        this.value = value;
+    private final int cardValue;
+
+    CardRank(final int cardValue) {
+        this.cardValue = cardValue;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
+    public int getCardValue() {
+        return cardValue;
     }
 }
 

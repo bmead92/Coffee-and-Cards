@@ -28,10 +28,12 @@ public class BlackJack {
 
     public static BlackJack createBlackJackGame() {
         if (blackJackInstance == null) {
-            blackJackInstance = new BlackJack(new DeckUtility(), new Dealer(), new User(), new PlayerUtility());
+            blackJackInstance = new BlackJack(new DeckUtility(), new Dealer(),
+                    new User(), new PlayerUtility());
         }
         return blackJackInstance;
     }
+
     public void setUpGame() {
         deckUtility.fillDeckWithCards();
         deckUtility.shuffleCards(deckUtility.getDeckOfCardsAsAList());
@@ -42,6 +44,7 @@ public class BlackJack {
         List<Card> copyOfUserHand = playerUtility.checkForAcesAndChangeCardRankIfNecessary(user.getUserHand());
         user.setUserHand(copyOfUserHand);
     }
+
     public void initialDealOfCards() {
         while (cardsDealt < STARTING_NUMBER_OF_CARDS) {
             playerUtility.drawCardFromDeck(dealer.getDealerHand());
@@ -49,12 +52,13 @@ public class BlackJack {
             cardsDealt++;
         }
     }
-    public void finalInformationOfUser(User theUser) {
+
+    public void finalInformationOfUser(final User theUser) {
         playerUtility.displayCardsInHand(theUser.getUserHand());
         System.out.println("The final value of your hand is: " + playerUtility.currentValueOfHand(user.getUserHand()));
     }
 
-    public void finalInformationOfDealer(Dealer theDealer) {
+    public void finalInformationOfDealer(final Dealer theDealer) {
         theDealer.checkForDealerMinimumHandValue();
         theDealer.displayCurrentDealerHandAsCards();
         System.out.println("The dealer's hand is worth: " + theDealer.displayCurrentDealerHandAsValues());
@@ -67,7 +71,7 @@ public class BlackJack {
         }
     }
 
-    public boolean checkIfPlayerWantsToStartANewRound(Scanner scanner) {
+    public boolean checkIfPlayerWantsToStartANewRound(final Scanner scanner) {
         String playAgain;
         boolean doesPlayerWantToPlayAgain = true;
         System.out.println(BlackJackClientUtility.playAgainMessage());
@@ -129,7 +133,7 @@ public class BlackJack {
         return deckUtility;
     }
 
-    public void setDeckUtility(DeckUtility deckUtility) {
+    public void setDeckUtility(final DeckUtility deckUtility) {
         this.deckUtility = deckUtility;
     }
 
@@ -137,7 +141,7 @@ public class BlackJack {
         return dealer;
     }
 
-    public void setDealer(Dealer dealer) {
+    public void setDealer(final Dealer dealer) {
         this.dealer = dealer;
     }
 
@@ -145,7 +149,7 @@ public class BlackJack {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(final User user) {
         this.user = user;
     }
 
@@ -153,7 +157,7 @@ public class BlackJack {
         return playerUtility;
     }
 
-    public void setPlayerUtility(PlayerUtility playerUtility) {
+    public void setPlayerUtility(final PlayerUtility playerUtility) {
         this.playerUtility = playerUtility;
     }
 
@@ -161,13 +165,15 @@ public class BlackJack {
         return blackJackInstance;
     }
 
-    public static void setBlackJackInstance(BlackJack blackJackInstance) {
+    public static void setBlackJackInstance(final BlackJack blackJackInstance) {
         BlackJack.blackJackInstance = blackJackInstance;
     }
+
     public int getCardsDealt() {
         return cardsDealt;
     }
-    public void setCardsDealt(int cardsDealt) {
+
+    public void setCardsDealt(final int cardsDealt) {
         this.cardsDealt = cardsDealt;
     }
 }

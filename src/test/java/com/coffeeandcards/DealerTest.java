@@ -23,12 +23,13 @@ public class DealerTest {
         blackJackInstance = BlackJack.getBlackJackInstance();
         blackJackInstance.setUpGame();
     }
+
     @Test
     public void testDisplayCurrentDealerHandAsCards() {
     }
 
     @Test
-    public void testShowDealerCardValuesIfUserTurnCompleted(){
+    public void testShowDealerCardValuesIfUserTurnCompleted() {
         List<Card> testListOfCards = new ArrayList<>();
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.EIGHT));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TEN));
@@ -40,7 +41,7 @@ public class DealerTest {
     }
 
     @Test
-    public void testShowDealerCardValuesIfUserTurnIsNotCompleted(){
+    public void testShowDealerCardValuesIfUserTurnIsNotCompleted() {
         List<Card> testListOfCards = new ArrayList<>();
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.EIGHT));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TEN));
@@ -50,6 +51,7 @@ public class DealerTest {
         int expectedValue = 8;
         assertEquals(expectedValue, actualValue);
     }
+
     @Test
     public void testDealerHandValueIfValueLessThan17ShouldIncreaseInValue() {
         List<Card> testListOfCards = new ArrayList<>();
@@ -63,6 +65,7 @@ public class DealerTest {
         int valueOfDealerHandAfter = currentValueOfHandTestVersion(dealerHand);
         assertTrue(valueOfDealerHandAfter > valueOfDealerHandBefore);
     }
+
     @Test
     public void testDealerHandValueIfValueLessThan17ShouldIncreaseDealerHandSize() {
         List<Card> testListOfCards = new ArrayList<>();
@@ -76,6 +79,7 @@ public class DealerTest {
         int sizeOfDealerHandAfter = dealerHand.size();
         assertTrue(sizeOfDealerHandAfter > sizeOfDealerHandBefore);
     }
+
     @Test
     public void testDealerHandValueIfValueGreaterThanOrEqualTo17ShouldNotChangeValue() {
         List<Card> testListOfCards = new ArrayList<>();
@@ -105,7 +109,7 @@ public class DealerTest {
     private int currentValueOfHandTestVersion(List<Card> listOfCards) {
         int currentValueOfHand = 0;
         for (Card card : listOfCards) {
-            int valueOfCard = card.getCardRank().getValue();
+            int valueOfCard = card.getCardRank().getCardValue();
             currentValueOfHand += valueOfCard;
         }
         return currentValueOfHand;

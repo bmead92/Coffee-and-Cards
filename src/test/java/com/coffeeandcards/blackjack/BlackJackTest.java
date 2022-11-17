@@ -16,21 +16,21 @@ public class BlackJackTest {
     }
 
     @Test
-    public void testInitialDealOfCards(){
+    public void testInitialDealOfCards() {
         blackJackInstance.initialDealOfCards();
         int actualValue = blackJackInstance.getCardsDealt();
         assertEquals(2, actualValue);
     }
 
     @Test
-    public void testInitialDealOfDealerHandCards(){
+    public void testInitialDealOfDealerHandCards() {
         blackJackInstance.initialDealOfCards();
         int actualValue = blackJackInstance.getDealer().getDealerHand().size();
         assertEquals(2, actualValue);
     }
 
     @Test
-    public void testInitialDealOfUserHandCards(){
+    public void testInitialDealOfUserHandCards() {
         blackJackInstance.initialDealOfCards();
         int actualValue = blackJackInstance.getUser().getUserHand().size();
         assertEquals(2, actualValue);

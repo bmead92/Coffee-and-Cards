@@ -43,21 +43,24 @@ public class Dealer {
         } else {
             currentVisibleValueOfDealerHand = dealerHand.get(0).
                     getCardRank().
-                    getValue();
+                    getCardValue();
         }
         return currentVisibleValueOfDealerHand;
     }
+
     public void checkForDealerMinimumHandValue() {
         PlayerUtility playerUtility = BlackJack.getBlackJackInstance().getPlayerUtility();
         int currentValueOfDealerHand = playerUtility.currentValueOfHand(dealerHand);
-            while (currentValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
-                playerUtility.drawCardFromDeck(dealerHand);
+        while (currentValueOfDealerHand < MINIMUM_DEALER_HAND_VALUE) {
+            playerUtility.drawCardFromDeck(dealerHand);
             currentValueOfDealerHand = playerUtility.currentValueOfHand(dealerHand);
         }
     }
+
     public List<Card> getDealerHand() {
         return dealerHand;
     }
+
     public void setDealerHand(List<Card> dealerHand) {
         this.dealerHand = dealerHand;
     }

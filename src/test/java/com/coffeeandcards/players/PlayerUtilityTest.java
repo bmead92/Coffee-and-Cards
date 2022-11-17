@@ -17,6 +17,7 @@ public class PlayerUtilityTest {
     private BlackJack blackJackInstance;
     private List<Card> testListOfCards;
     private PlayerUtility playerUtility;
+
     @Before
     public void setUp() {
         BlackJack.createBlackJackGame();
@@ -25,6 +26,7 @@ public class PlayerUtilityTest {
         testListOfCards = new ArrayList<>();
         playerUtility = BlackJack.getBlackJackInstance().getPlayerUtility();
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithOnlyAnAce() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -32,6 +34,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(11, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndTwo() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -40,6 +43,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(13, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndThree() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -48,6 +52,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(14, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndFour() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -56,6 +61,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(15, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndFive() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -64,6 +70,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(16, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndSix() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -72,6 +79,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(17, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndSeven() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -80,6 +88,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(18, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndEight() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -88,6 +97,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(19, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndNine() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -96,6 +106,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(20, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryWithAceAndTen() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -104,6 +115,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryAceAndJack() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -112,6 +124,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryAceAndQueen() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -120,6 +133,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(21, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testCheckForAcesAndChangeCardRankIfNecessaryAceAndKing() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
@@ -139,7 +153,7 @@ public class PlayerUtilityTest {
     }
 
     @Test
-    public void ttestCheckForAcesAndChangeCardRankIfNecessaryTriggers() {
+    public void testCheckForAcesAndChangeCardRankIfNecessaryTriggers() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.ACE));
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.KING));
         testListOfCards.add(new Card(CardSuit.DIAMONDS, CardRank.KING));
@@ -167,6 +181,7 @@ public class PlayerUtilityTest {
         playerUtility.setCopyOfList(testListOfCards);
         assertEquals(20, currentValueOfHandTestVersion(playerUtility.getCopyOfList()));
     }
+
     @Test
     public void testDrawCardFromDeckIncreasesHandValue() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TWO));
@@ -179,6 +194,7 @@ public class PlayerUtilityTest {
         int valueOfCardsAfterDrawing = currentValueOfHandTestVersion(testListOfCards);
         assertEquals(10, valueOfCardsAfterDrawing);
     }
+
     @Test
     public void testDrawCardFromDeckIncreasesHandSize() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TWO));
@@ -191,6 +207,7 @@ public class PlayerUtilityTest {
         int sizeOfHandAfterDrawing = testListOfCards.size();
         assertEquals(3, sizeOfHandAfterDrawing);
     }
+
     @Test
     public void testCurrentValueOfHand() {
         testListOfCards.add(new Card(CardSuit.HEARTS, CardRank.TWO));
@@ -200,15 +217,17 @@ public class PlayerUtilityTest {
         int actualValue = playerUtility.currentValueOfHand(testListOfCards);
         assertEquals(18, actualValue);
     }
+
     @After
     public void tearDown() {
         BlackJack.setBlackJackInstance(null);
         testListOfCards.clear();
     }
+
     private int currentValueOfHandTestVersion(List<Card> listOfCards) {
         int currentValueOfHand = 0;
         for (Card card : listOfCards) {
-            int valueOfCard = card.getCardRank().getValue();
+            int valueOfCard = card.getCardRank().getCardValue();
             currentValueOfHand += valueOfCard;
         }
         return currentValueOfHand;
