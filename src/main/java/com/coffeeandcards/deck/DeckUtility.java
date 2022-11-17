@@ -20,7 +20,7 @@ public class DeckUtility {
         CardRank[] cardRanks = CardRank.values();
         CardSuit[] cardSuits = CardSuit.values();
         for (CardRank cardRank : cardRanks) {
-            if (cardRank.equals(CardRank.DEMOTED_ACE)) {
+            if (cardRank.equals(CardRank.A_DEMOTED_ACE)) {
                 continue;
             }
             for (CardSuit cardSuit : cardSuits) {

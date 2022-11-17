@@ -18,7 +18,7 @@ public class PlayerUtility {
                     = currentValueOfHand > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
                     card.getCardRank().equals(CardRank.ACE);
             if (currentCardIsAceAndNeedsValueChangedToOne) {
-                card.setValue(CardRank.DEMOTED_ACE);
+                card.setGetCardValue(CardRank.A_DEMOTED_ACE);
             }
         }
         return copyOfList;
@@ -45,7 +45,8 @@ public class PlayerUtility {
             boolean cardIsAFaceCard = cardRank.equals(CardRank.ACE) ||
                     cardRank.equals(CardRank.KING) ||
                     cardRank.equals(CardRank.QUEEN) ||
-                    cardRank.equals(CardRank.JACK);
+                    cardRank.equals(CardRank.JACK) ||
+                    cardRank.equals(CardRank.A_DEMOTED_ACE);
             if (cardIsAFaceCard) {
                 char firstCharInCardRank = cardRank.name().charAt(0);
                 display.append(firstCharInCardRank).append("  ")

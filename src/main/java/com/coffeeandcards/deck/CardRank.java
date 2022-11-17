@@ -14,7 +14,7 @@ public enum CardRank {
     KING(10),
     QUEEN(10),
     ACE(11),
-    DEMOTED_ACE(1);
+    A_DEMOTED_ACE(1);
 
     private int value;
     CardRank(int value) {
