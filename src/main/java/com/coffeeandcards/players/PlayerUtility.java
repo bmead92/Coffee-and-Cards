@@ -18,7 +18,7 @@ public class PlayerUtility {
                     = valueOfHandBeingPassedIn > BlackJack.MAX_VALUE_ALLOWED_IN_HAND &&
                     card.getCardRank().equals(CardRank.ACE);
             if (currentCardIsAceAndNeedsValueChangedToOne) {
-                card.getCardRank().setValue(1);
+                card.setValue(CardRank.DEMOTED_ACE);
             }
         }
         return copyOfList;

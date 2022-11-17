@@ -1,6 +1,7 @@
 package com.coffeeandcards.blackjack;
 
 import com.coffeeandcards.deck.Card;
+import com.coffeeandcards.deck.CardRank;
 import com.coffeeandcards.players.Dealer;
 import com.coffeeandcards.deck.DeckUtility;
 import com.coffeeandcards.players.PlayerUtility;

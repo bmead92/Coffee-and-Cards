@@ -25,6 +25,14 @@ public class Card {
         this.value = value;
     }
 
+    public CardSuit getSuit() {
+        return suit;
+    }
+
+    public CardRank getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return "Card: " + getCardRank() + " of " + getCardSuit().getIcon() +
