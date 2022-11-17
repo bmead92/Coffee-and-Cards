@@ -1,4 +1,4 @@
-package com.coffeeandcards;
+package com.coffeeandcards.players;
 
 import com.coffeeandcards.blackjack.BlackJack;
 import com.coffeeandcards.deck.Card;
