@@ -4,7 +4,7 @@
 
 ![image](https://cdn.pixabay.com/photo/2020/11/16/23/12/poker-5750834__340.jpg)
 
-#### Project Presentation: 
+[CoffeeAndCards Presentation Link](https://tlgcohort-my.sharepoint.com/:p:/p/kiaya_anderson/Ed4SDxXUtLhOhEXbuwJvuNsBAmQ8H9c9V_h6z00_97OlRQ)
 
 ## Project Description
 **“Coffee & Cards”** is a Java Blackjack experience. The game is
