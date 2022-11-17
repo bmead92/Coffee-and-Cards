@@ -10,13 +10,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BlackJack {
+    public static final int MAX_VALUE_ALLOWED_IN_HAND = 21;
+    public static final int STARTING_NUMBER_OF_CARDS = 2;
     private static BlackJack blackJackInstance = null;
     private DeckUtility deckUtility;
     private Dealer dealer;
     private User user;
     private PlayerUtility playerUtility;
-    public static final int MAX_VALUE_ALLOWED_IN_HAND = 21;
-    public static final int STARTING_NUMBER_OF_CARDS = 2;
+    private int cardsDealt = 0;
 
     private BlackJack(DeckUtility deckUtility, Dealer dealer, User user, PlayerUtility playerUtility) {
         setDeckUtility(deckUtility);
@@ -41,8 +42,7 @@ public class BlackJack {
         List<Card> copyOfUserHand = playerUtility.checkForAcesAndChangeCardRankIfNecessary(user.getUserHand());
         user.setUserHand(copyOfUserHand);
     }
-    public void initialDealOfCards() { // test lok
-        int cardsDealt = 0;
+    public void initialDealOfCards() {
         while (cardsDealt < STARTING_NUMBER_OF_CARDS) {
             playerUtility.drawCardFromDeck(dealer.getDealerHand());
             playerUtility.drawCardFromDeck(user.getUserHand());
@@ -60,7 +60,7 @@ public class BlackJack {
         System.out.println("The dealer's hand is worth: " + theDealer.displayCurrentDealerHandAsValues());
     }
 
-    public void userInstantWin() { //test lok
+    public void userInstantWin() {
         int valueOfUserHand = playerUtility.currentValueOfHand(user.getUserHand());
         if (valueOfUserHand == MAX_VALUE_ALLOWED_IN_HAND) {
             System.out.println("How lucky are you?! You started with 21. You win!");
@@ -163,5 +163,11 @@ public class BlackJack {
 
     public static void setBlackJackInstance(BlackJack blackJackInstance) {
         BlackJack.blackJackInstance = blackJackInstance;
+    }
+    public int getCardsDealt() {
+        return cardsDealt;
+    }
+    public void setCardsDealt(int cardsDealt) {
+        this.cardsDealt = cardsDealt;
     }
 }

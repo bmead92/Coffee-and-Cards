@@ -1,34 +1,38 @@
 package com.coffeeandcards.blackjack;
 
-import com.coffeeandcards.deck.Card;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
 public class BlackJackTest {
     private BlackJack blackJackInstance;
-    private List<Card> testListOfCards;
 
     @Before
     public void setUp() {
         BlackJack.createBlackJackGame();
         blackJackInstance = BlackJack.getBlackJackInstance();
         blackJackInstance.setUpGame();
-        testListOfCards = new ArrayList<>();
-    }
-
-    @Test // Once we run the method the size of dealer hand must be 2
-    public void testInitialDealOfCards(){
-
     }
 
     @Test
-    public void testUserInstantWin(){
-
+    public void testInitialDealOfCards(){
+        blackJackInstance.initialDealOfCards();
+        int actualValue = blackJackInstance.getCardsDealt();
+        assertEquals(2, actualValue);
     }
 
+    @Test
+    public void testInitialDealOfDealerHandCards(){
+        blackJackInstance.initialDealOfCards();
+        int actualValue = blackJackInstance.getDealer().getDealerHand().size();
+        assertEquals(2, actualValue);
+    }
 
-
+    @Test
+    public void testInitialDealOfUserHandCards(){
+        blackJackInstance.initialDealOfCards();
+        int actualValue = blackJackInstance.getUser().getUserHand().size();
+        assertEquals(2, actualValue);
+    }
 }
