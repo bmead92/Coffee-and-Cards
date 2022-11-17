@@ -4,6 +4,8 @@
 
 ![image](https://cdn.pixabay.com/photo/2020/11/16/23/12/poker-5750834__340.jpg)
 
+####Project Presentation: 
+
 ## Project Description
 **“Coffee & Cards”** is a Java Blackjack experience. The game is
 a console-based application where a user will attempt to
@@ -55,3 +57,4 @@ Initial Conception of Game -
 ![image](https://res.cloudinary.com/kacloud20/image/upload/v1668621505/TLGFinalProject/Screen_Shot_2022-11-16_at_12.55.25_PM_cxwnut.png)
 
 Final Model of Game -
+![image](https://res.cloudinary.com/kacloud20/image/upload/v1668711142/TLGFinalProject/Screen_Shot_2022-11-17_at_1.52.07_PM_gw4cqi.png)
